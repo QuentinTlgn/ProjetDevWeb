@@ -1,0 +1,76 @@
+/* Styles généraux */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* Styles pour le header */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Aligne le contenu en haut */
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    width: 200px;
+    position: fixed; /* Fixe la navbar sur le côté gauche */
+}
+
+/* Styles pour la navigation */
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styles pour le logo */
+.logo {
+    width: 100px; /* Ajuste la taille du logo */
+    margin-top: 20px; /* Espace au-dessus du logo */
+    margin-bottom: 20px; /* Espace entre le logo et les liens */
+}
+
+/* Styles pour le conteneur des liens */
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre les liens sous le logo */
+}
+
+/* Styles pour les liens de navigation */
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2em;
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #ddd;
+}
+
+/* Styles pour le contenu principal (main) */
+main {
+    margin-left: 220px; /* Pour laisser de l'espace à la barre de navigation fixe */
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.formatted-text {
+    white-space: pre-line; /* Garde les retours à la ligne */
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px; /* Largeur maximale du texte */
+}
