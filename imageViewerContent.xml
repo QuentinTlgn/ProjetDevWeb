@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<images>
+    <image>
+        <title>Pot 1</title>
+        <path>/images/pots/pot1.jpg</path>
+    </image>
+    <image>
+        <title>Pot 2</title>
+        <path>/images/pots/pot2.jpg</path>
+    </image>
+        <image>
+        <title>Pot 3</title>
+        <path>/images/pots/pot3.jpg</path>
+    </image>
+</images>
