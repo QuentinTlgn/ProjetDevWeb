@@ -1,0 +1,21 @@
+/* form.css */
+
+/* Styles pour les formulaires de saisie */
+input, textarea, select {
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px; /* Espacement entre les champs */
+    width: 100%; /* Prend toute la largeur disponible */
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff; /* Couleur de bordure au focus */
+    outline: none; /* Enlève le contour par défaut */
+}
+
+textarea {
+    resize: vertical; /* Permet de redimensionner verticalement */
+}

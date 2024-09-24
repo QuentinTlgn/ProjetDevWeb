@@ -1,0 +1,23 @@
+/* mediaQueries.css */
+
+/* Exemple de media query pour les petits écrans */
+@media (max-width: 768px) {
+    header {
+        height: auto; /* Laissez le header s'adapter au contenu */
+    }
+    
+    main {
+        margin-left: 0; /* Retirez la marge pour les petits écrans */
+        padding: 10px; /* Réduisez le padding */
+    }
+
+    .nav-links {
+        flex-direction: row; /* Changez l'orientation des liens */
+        justify-content: space-around; /* Espace autour des liens */
+    }
+
+    #image-viewer {
+        width: 100%; /* Rendre le viewer responsive */
+        height: auto; /* Ajuster la hauteur automatiquement */
+    }
+}
