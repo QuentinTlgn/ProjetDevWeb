@@ -3,6 +3,8 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
 }
 
 /* Styles pour le header */
@@ -11,7 +13,7 @@ header {
     flex-direction: column;
     justify-content: flex-start; /* Aligne le contenu en haut */
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Prend toute la hauteur de la vue */
     background-color: #f4f4f4;
     width: 200px;
     position: fixed; /* Fixe la navbar sur le côté gauche */
@@ -57,13 +59,12 @@ nav a:hover {
 main {
     margin-left: 220px; /* Pour laisser de l'espace à la barre de navigation fixe */
     padding: 20px;
+    flex: 1; /* Permet au main de prendre l'espace restant dans la page */
 }
 
 h1 {
     font-size: 2em;
     color: #333;
-    margin-top: 30px; /* Espace au-dessus du h2 */
-    margin-bottom: 10px; /* Espace en dessous */
 }
 
 h2 {
@@ -88,19 +89,37 @@ p {
     font-size: 1.1em;
     line-height: 1.6;
     color: #666;
-    max-width: 1000px; /* Largeur maximale du texte */
+    max-width: 800px; /* Largeur maximale du texte */
 }
-
 
 /* Styles pour le footer */
 footer {
     background-color: #f4f4f4; /* Couleur de fond */
     text-align: center; /* Centre le texte */
     padding: 10px 0; /* Espacement vertical */
-    position: relative; /* Position par rapport au contenu principal */
+    width: 100%; /* Prend toute la largeur disponible */
+    position: center;
+    margin-top: auto; /* Permet au footer de rester en bas si la page est courte */
 }
 
 footer p {
     margin: 0; /* Enlève la marge par défaut */
     color: #666; /* Couleur du texte */
+}
+
+#image-viewer {
+    max-width: 600px;
+    height: 400px;
+    margin: 20px auto;
+    text-align: center;
+    overflow: hidden; /* Cache les débordements si nécessaire */
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.viewer-img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto;
 }
