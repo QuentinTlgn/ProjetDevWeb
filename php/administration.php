@@ -13,13 +13,10 @@
 </head>
 <body>
     <header>
-        <nav>
-            <img src="/images/logo.png" alt="Logo" class="logo">
-            <div class="nav-links">
-                <a href="../index.html">Accueil</a>
-                <a href="descriptions.html">Descriptions</a>
-                <a href="administration.php">Administration</a>
-            </div>
+        <nav class="topnav">
+            <a href="/index.html">Accueil</a>
+            <a href="/html/descriptions.html">Descriptions</a>
+            <a href="/html/contact.html">Contact</a>
         </nav>
     </header>
 
@@ -38,7 +35,7 @@
 
             // Préparez et exécutez la requête
             $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
-            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
 
             // Vérifiez si l'utilisateur existe
@@ -46,12 +43,12 @@
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 
                 // Vérifiez le mot de passe
-                if (password_verify($password, $user['password'])) {
+                if ($password === $user['password']) {
                     // Authentification réussie
-                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['user_id'] = $user['username'];
                     echo "<p>Bienvenue, $username !</p>";
                 } else {
-                    echo "<p style='color: red;'>Mot de passe incorrect.</p>";
+                     echo "<p style='color: red;'>Mot de passe incorrect.</p>";
                 }
             } else {
                 echo "<p style='color: red;'>Utilisateur non trouvé.</p>";
@@ -71,8 +68,8 @@
     </main>
     
     <footer>
-        <p>&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</p>
-        <p><a href="administration.php">Administration</a></p>
+        <div class="footer-text">&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</div>
+        <a href="/php/administration.php" class="footer-link">Administration</a>
     </footer>
 </body>
 </html>

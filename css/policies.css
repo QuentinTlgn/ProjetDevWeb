@@ -24,7 +24,7 @@ p {
     font-size: 1.1em;
     line-height: 1.6;
     color: #666;
-    max-width: 80%; /* Largeur maximale du texte */
+    max-width: 90%; /* Largeur maximale du texte */
     margin: 0 auto;
     white-space: pre-line; /* Garde les retours à la ligne */
 }

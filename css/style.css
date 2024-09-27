@@ -13,7 +13,7 @@ header {
     align-items: center;
     background-color: #333;
     position: sticky;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 100;
@@ -25,9 +25,9 @@ header {
     display: flex;
     flex-grow: 1;
     justify-content: center;
-  }
-  
-  /* Style the links inside the navigation bar */
+}
+
+/* Style the links inside the navigation bar */
 .topnav a {
     float: left;
     color: #f2f2f2;
@@ -36,14 +36,14 @@ header {
     text-decoration: none;
     font-size: 17px;
 }
-  
-  /* Change the color of links on hover */
+
+/* Change the color of links on hover */
 .topnav a:hover {
     background-color: #ddd;
     color: black;
 }
-  
-  /* Add a color to the active/current link */
+
+/* Add a color to the active/current link */
 .topnav a.active {
     background-color: #ed8d18;
     color: white;
@@ -53,6 +53,7 @@ header {
 main {
     text-align: center;
     flex: 1; /* Permet au main de prendre l'espace restant dans la page */
+    padding-bottom: 50px; /* Évite que le contenu principal chevauche le footer */
 }
 
 footer {
@@ -61,10 +62,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    position: relative; /* Relatif au parent, pas fixe */
     width: 100%;
+    margin-top: auto; /* Pousse le footer en bas de la page si nécessaire */
 }
 
 .footer-text {
