@@ -7,52 +7,46 @@ body {
     min-height: 100vh; /* Prend toute la hauteur de la fenêtre */
 }
 
-/* Styles pour le header */
 header {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Aligne le contenu en haut */
+    justify-content: space-between;
     align-items: center;
-    height: 100vh; /* Prend toute la hauteur de la vue */
-    background-color: #f4f4f4;
-    width: 200px;
-    position: fixed; /* Fixe la navbar sur le côté gauche */
+    background-color: #333;
+    position: sticky;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px gray;
 }
 
-/* Styles pour la navigation */
-nav {
+/* Add a black background color to the top navigation */
+.topnav {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Styles pour le logo */
-.logo {
-    width: 100px; /* Ajuste la taille du logo */
-    margin-top: 20px; /* Espace au-dessus du logo */
-    margin-bottom: 20px; /* Espace entre le logo et les liens */
-}
-
-/* Styles pour le conteneur des liens */
-.nav-links {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centre les liens sous le logo */
-}
-
-/* Styles pour les liens de navigation */
-nav a {
+    flex-grow: 1;
+    justify-content: center;
+  }
+  
+  /* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    color: #333;
-    font-size: 1.2em;
-    padding: 15px;
-    width: 100%;
-    text-align: left;
-    transition: background-color 0.3s ease;
+    font-size: 17px;
 }
-
-nav a:hover {
+  
+  /* Change the color of links on hover */
+.topnav a:hover {
     background-color: #ddd;
+    color: black;
+}
+  
+  /* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #ed8d18;
+    color: white;
 }
 
 /* Styles pour le contenu principal (main) */
@@ -62,19 +56,34 @@ main {
     flex: 1; /* Permet au main de prendre l'espace restant dans la page */
 }
 
-/* Styles pour le footer */
 footer {
-    background-color: #f4f4f4; /* Couleur de fond */
-    text-align: center; /* Centre le texte */
-    padding: 10px 0; /* Espacement vertical */
-    width: 100%; /* Prend toute la largeur disponible */
-    position: center;
-    margin-top: auto; /* Permet au footer de rester en bas si la page est courte */
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-footer p {
-    margin: 0; /* Enlève la marge par défaut */
-    color: #666; /* Couleur du texte */
+.footer-text {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
 }
 
 #image-viewer {
