@@ -51,8 +51,7 @@ header {
 
 /* Styles pour le contenu principal (main) */
 main {
-    margin-left: 220px; /* Pour laisser de l'espace à la barre de navigation fixe */
-    padding: 20px;
+    text-align: center;
     flex: 1; /* Permet au main de prendre l'espace restant dans la page */
 }
 
