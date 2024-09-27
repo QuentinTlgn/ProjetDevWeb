@@ -1,21 +1,46 @@
 /* form.css */
 
-/* Styles pour les formulaires de saisie */
-input, textarea, select {
-    font-family: Arial, sans-serif;
-    font-size: 1em;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 10px; /* Espacement entre les champs */
+/* Styles pour le formulaire d'authentification */
+form {
+    display: flex;
+    flex-direction: column; /* Disposition verticale des éléments */
+    max-width: 400px; /* Largeur maximale du formulaire */
+    margin: 20px auto; /* Centre le formulaire */
+    padding: 20px;
+    background-color: #fff; /* Fond blanc */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Styles pour les champs de saisie */
+input {
+    margin: 10px 0; /* Marge verticale entre les champs */
+    padding: 10px; /* Espacement intérieur */
+    border: 1px solid #ccc; /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
     width: 100%; /* Prend toute la largeur disponible */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
 }
 
-input:focus, textarea:focus, select:focus {
-    border-color: #007bff; /* Couleur de bordure au focus */
-    outline: none; /* Enlève le contour par défaut */
+/* Styles pour les labels */
+label {
+    margin-bottom: 5px; /* Espace entre le label et le champ */
+    font-weight: bold; /* Met le texte en gras */
 }
 
-textarea {
-    resize: vertical; /* Permet de redimensionner verticalement */
+/* Styles pour le bouton */
+button {
+    padding: 10px; /* Espacement intérieur */
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur en main */
+    transition: background-color 0.3s ease; /* Animation lors du survol */
+    margin-top: 10px; /* Marge au-dessus du bouton */
+}
+
+button:hover {
+    background-color: #0056b3; /* Couleur au survol */
 }
