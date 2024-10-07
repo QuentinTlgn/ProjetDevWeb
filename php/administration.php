@@ -34,7 +34,7 @@
             $password = $_POST['password'];
 
             // Préparez et exécutez la requête
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+            $stmt = $pdo->prepare("SELECT * FROM admins WHERE username = :username");
             $stmt->bindParam(':username', $username, PDO::PARAM_STR);
             $stmt->execute();
 

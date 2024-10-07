@@ -1,8 +1,8 @@
 <?php
-$host = 'mysql-kskskzkz.alwaysdata.net'; // L'adresse du serveur
-$dbname = 'kskskzkz_web'; // Nom de votre base de données
-$user = 'kskskzkz'; // Nom d'utilisateur
-$pass = 'grosfilsdepute'; // Mot de passe
+$host = 'localhost'; // L'adresse du serveur
+$dbname = 'ruedespotiers'; // Nom de votre base de données
+$user = 'ruedespotiersadm'; // Nom d'utilisateur
+$pass = 'ladminderuedespotiersadm'; // Mot de passe
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
