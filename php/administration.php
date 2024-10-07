@@ -48,10 +48,10 @@
                     $_SESSION['user_id'] = $user['username'];
                     echo "<p>Bienvenue, $username !</p>";
                 } else {
-                     echo "<p style='color: red;'>Mot de passe incorrect.</p>";
+                     echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
                 }
             } else {
-                echo "<p style='color: red;'>Utilisateur non trouvé.</p>";
+                echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
             }
         }
         ?>
