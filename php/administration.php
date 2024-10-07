@@ -32,36 +32,46 @@
         <h1>Authentification</h1>
 
         <?php
-        session_start(); // Démarre une session
+            session_start(); // Démarre une session
 
-        // Vérifiez si le formulaire a été soumis
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            include 'db.php'; // Inclut le fichier de connexion à la base de données
-
-            $username = $_POST['login'];
-            $password = $_POST['password'];
-
-            // Préparez et exécutez la requête
-            $stmt = $pdo->prepare("SELECT * FROM admins WHERE username = :username");
-            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-            $stmt->execute();
-
-            // Vérifiez si l'utilisateur existe
-            if ($stmt->rowCount() > 0) {
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                
-                // Vérifiez le mot de passe
-                if ($password === $user['password']) {
-                    // Authentification réussie
-                    $_SESSION['user_id'] = $user['username'];
-                    echo "<p>Bienvenue, $username !</p>";
-                } else {
-                     echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
-                }
-            } else {
-                echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
+            // Vérifier si l'utilisateur est déjà connecté
+            if (isset($_SESSION['user_id'])) {
+                // Si l'utilisateur est connecté, rediriger vers le tableau de bord
+                header("Location: admin_dashboard.php");
+                exit();
             }
-        }
+
+            // Vérifiez si le formulaire a été soumis
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                include 'db.php'; // Inclut le fichier de connexion à la base de données
+            
+                $username = $_POST['login'];
+                $password = $_POST['password'];
+            
+                // Préparez et exécutez la requête
+                $stmt = $pdo->prepare("SELECT * FROM admins WHERE username = :username");
+                $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+                $stmt->execute();
+            
+                // Vérifiez si l'utilisateur existe
+                if ($stmt->rowCount() > 0) {
+                    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                
+                    // Vérifiez le mot de passe
+                    if ($password === $user['password']) {
+                        // Authentification réussie
+                        $_SESSION['user_id'] = $user['username'];
+                    
+                        // Redirection vers une page protégée
+                        header("Location: admin_dashboard.php"); // Remplacez par la page cible
+                        exit(); // Assure-toi que le script s'arrête après la redirection
+                    } else {
+                         echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
+                    }
+                } else {
+                    echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
+                }
+            }
         ?>
 
         <form action="" method="POST">
