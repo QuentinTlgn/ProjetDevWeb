@@ -15,11 +15,19 @@
 <body>
     <header>
         <nav class="topnav">
-            <a class="active" href="#">Accueil</a>
-            <a href="/html/descriptions.html">Descriptions</a>
-            <a href="/html/contact.html">Contact</a>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-center">
+                <a class="active" href="#">Accueil</a>
+                <a href="/html/descriptions.html">Descriptions</a>
+                <a href="/html/contact.html">Contact</a>
+            </div>
         </nav>
     </header>
+    
 
     <main>
         <section>
@@ -68,5 +76,17 @@
 
 
 <script src="../js/imageViewer.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-center');
+
+    burger.addEventListener('click', function () {
+        nav.classList.toggle('active'); // Ajoute/enlève la classe active
+    });
+});
+</script>
+    
 
 </html>

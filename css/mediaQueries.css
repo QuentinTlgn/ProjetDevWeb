@@ -13,6 +13,55 @@
         position: static; /* Supprime la position absolue */
         margin-right: 0; /* Enlève la marge à droite */
         margin-top: 10px; /* Ajoute une marge au-dessus pour espacer du texte du footer */
-    }
+    }  
     
+    /* Montrer le bouton burger sur mobile */
+    .burger {
+        display: flex;
+    }
+
+    /* Cacher le menu par défaut sur mobile */
+    .nav-center {
+        display: none;
+        flex-direction: column;
+        background-color: rgb(89, 89, 89);
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    .nav-center a {
+        padding: 10px;
+        border-bottom: 1px solid white;
+    }
+
+    /* Montrer le menu quand il est actif */
+    .nav-center.active {
+        display: flex;
+    }
+
+    .entry {
+        flex-direction: column; /* Sur mobile, empile les éléments */
+        align-items: center; /* Centre les éléments horizontalement */
+    }
+
+    .modern-description {
+        margin-right: 0; /* Pas d'espacement à droite sur mobile */
+        margin-bottom: 10px; /* Ajoute un espacement en bas */
+    }
+
+    /* Footer responsive */
+    footer {
+        flex-direction: column; /* Aligne les éléments verticalement */
+        position: relative; /* Supprime la position absolue pour centrer */
+        align-items: center; /* Centre les éléments */
+    }
+
+    .footer-link {
+        position: static; /* Supprime la position absolue */
+        margin-right: 0; /* Enlève la marge à droite */
+        margin-top: 10px; /* Ajoute une marge au-dessus pour espacer du texte du footer */
+    }  
 }

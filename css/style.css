@@ -103,3 +103,29 @@ footer {
     display: block;
     margin: auto;
 }
+
+
+
+/* Styles pour le bouton burger */
+.burger {
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 101;
+}
+
+.burger span {
+    height: 2px;
+    width: 25px;
+    background-color: white;
+    margin: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Styles généraux du menu de navigation */
+.nav-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
