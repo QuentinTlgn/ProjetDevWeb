@@ -21,9 +21,9 @@
                 <span></span>
             </div>
             <div class="nav-center">
-                <a href="../index.html">Accueil</a>
-                <a class="active" href="#">Descriptions</a>
-                <a href="/html/contact.html">Contact</a>
+                <a href="../index.php">Accueil</a>
+                <a href="/pages/descriptions.php">Descriptions</a>
+                <a href="/pages/contact.php">Contact</a>
             </div>
         </nav>
     </header>
@@ -43,7 +43,7 @@
 
             // Vérifiez si le formulaire a été soumis
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                include 'db.php'; // Inclut le fichier de connexion à la base de données
+                include '../php/db.php'; // Inclut le fichier de connexion à la base de données
             
                 $username = $_POST['login'];
                 $password = $_POST['password'];
@@ -87,7 +87,6 @@
     
     <footer>
         <div class="footer-text">&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</div>
-        <a href="/php/administration.php" class="footer-link">Administration</a>
     </footer>
 </body>
 

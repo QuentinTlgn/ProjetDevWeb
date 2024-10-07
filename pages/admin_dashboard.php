@@ -32,9 +32,10 @@ if (!isset($_SESSION['user_id'])) {
                 <span></span>
             </div>
             <div class="nav-center">
-                <a href="../index.html">Accueil</a>
-                <a href="#">Descriptions</a>
-                <a href="/html/contact.html">Contact</a>
+                <a href="../index.php">Accueil</a>
+                <a href="/pages/descriptions.php">Descriptions</a>
+                <a href="/pages/contact.php">Contact</a>
+                <a href="/php/logout.php">Déconnexion</a>
             </div>
         </nav>
     </header>
@@ -43,15 +44,10 @@ if (!isset($_SESSION['user_id'])) {
         <h1>Bienvenue sur le tableau de bord, <?php echo $_SESSION['user_id']; ?> !</h1>
 
         <p>Contenu réservé aux administrateurs.</p>
-        
-        <form action="logout.php" method="POST">
-            <button type="submit">Se déconnecter</button>
-        </form>
     </main>
     
     <footer>
         <div class="footer-text">&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</div>
-        <a href="/php/administration.php" class="footer-link">Administration</a>
     </footer>
 </body>
 

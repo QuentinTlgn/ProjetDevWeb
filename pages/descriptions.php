@@ -21,16 +21,22 @@
                 <span></span>
             </div>
             <div class="nav-center">
-                <a href="../index.html">Accueil</a>
+                <a href="../index.php">Accueil</a>
                 <a class="active" href="#">Descriptions</a>
-                <a href="/html/contact.html">Contact</a>
+                <a href="/pages/contact.php">Contact</a>
+                <?php
+                    session_start(); // Démarre la session
+                    if (isset($_SESSION['user_id'])) { // Vérifie si l'utilisateur est connecté
+                        echo '<a href="/php/logout.php">Déconnexion</a>'; // Lien de déconnexion avec la classe
+                    }
+                ?>
             </div>
         </nav>
     </header>
     
     <footer>
         <div class="footer-text">&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</div>
-        <a href="/php/administration.php" class="footer-link">Administration</a>
+        <a href="/pages/admin_login.php" class="footer-link">Administration</a>
     </footer>
     
 </body>
