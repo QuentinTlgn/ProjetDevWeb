@@ -12,11 +12,19 @@
     <title>Administration</title>
 </head>
 <body>
+
     <header>
         <nav class="topnav">
-            <a href="/index.html">Accueil</a>
-            <a href="/html/descriptions.html">Descriptions</a>
-            <a href="/html/contact.html">Contact</a>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-center">
+                <a href="../index.html">Accueil</a>
+                <a class="active" href="#">Descriptions</a>
+                <a href="/html/contact.html">Contact</a>
+            </div>
         </nav>
     </header>
 
@@ -72,4 +80,7 @@
         <a href="/php/administration.php" class="footer-link">Administration</a>
     </footer>
 </body>
+
+<script src="../js/burgerMenu.js"></script>    
+
 </html>
