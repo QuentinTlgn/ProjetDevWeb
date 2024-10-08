@@ -28,7 +28,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/mediaQueries.css">
     
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="../images/favicon.ico" />
     <title>Contact</title>
 </head>
 <body>
@@ -60,7 +60,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
         <section>
             <h3>Courrier</h3>
             <p class="formatted-text"><?php echo $nom; ?>
-            
+
                 <?php echo $adresse; ?>
             </p>
         </section>

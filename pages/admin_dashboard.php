@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/mediaQueries.css">
     
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="../images/favicon.ico" />
     <title>Tableau de bord Admin</title>
 </head>
 <body>

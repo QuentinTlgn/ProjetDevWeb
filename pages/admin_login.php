@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/mediaQueries.css">
     
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="../images/favicon.ico" />
     <title>Administration</title>
 </head>
 <body>
