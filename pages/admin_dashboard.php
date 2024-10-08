@@ -45,9 +45,28 @@ if (!isset($_SESSION['user_id'])) {
 
         <p>Contenu réservé aux administrateurs.</p>
 
+        <!-- Afficher le message de succès si présent -->
+        <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+            <div class="success-message">Modification réalisée avec succès !</div>
+        <?php endif; ?>
+
         <!-- Section pour les boxes -->
         <section class="dashboard">
-            <div class="box">Box 1</div>
+            <div class="box">
+                <h2>Ajouter un produit</h2>
+                <form action="../php/ajouter_produit.php" method="post">
+                    <label for="titre">Titre du produit:</label>
+                    <input type="text" id="titre" name="titre" required>
+
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description" required>
+
+                    <label for="image">Lien de l'image:</label>
+                    <input type="text" id="image" name="image" required>
+
+                    <button type="submit">Ajouter Produit</button>
+                </form>
+            </div>
             <div class="box">Box 2</div>
             <div class="box">Box 3</div>
             <div class="box">Box 4</div>

@@ -242,3 +242,9 @@ footer {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre pour un effet 3D */
     transition: box-shadow 0.3s ease; /* Transition pour l'effet au survol */
 }
+
+.success-message {
+    color: green; /* Couleur verte pour le message */
+    margin: 20px 0; /* Marge autour du message */
+    font-weight: bold; /* Texte en gras */
+}
