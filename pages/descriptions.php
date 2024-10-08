@@ -11,6 +11,7 @@
     
     <link rel="icon" href="../images/favicon.ico" />
     <title>Rue Des Potiers - Descriptions</title>
+
 </head>
 <body>
     <header>
@@ -23,11 +24,11 @@
             <div class="nav-center">
                 <a href="../index.php">Accueil</a>
                 <a class="active" href="#">Descriptions</a>
-                <a href="/pages/contact.php">Contact</a>
+                <a  href="/pages/contact.php">Contact</a>
                 <?php
                     session_start(); // Démarre la session
                     if (isset($_SESSION['user_id'])) { // Vérifie si l'utilisateur est connecté
-                        echo '<a href="/php/logout.php">Déconnexion</a>'; // Lien de déconnexion avec la classe
+                        echo '<a href="/php/logout.php">Déconnexion</a>';
                     }
                 ?>
             </div>
@@ -64,7 +65,15 @@
                         
                         // Vérifie si un lien d'image est disponible
                         if (!empty($product['link'])) {
-                            echo '      <img src="../' . htmlspecialchars($product['link']) . '" alt="Image du produit ' . htmlspecialchars($product['titre']) . '">';
+                            echo '      <a href="#lightbox' . $product['id'] . '">';
+                            echo '          <img src="../' . htmlspecialchars($product['link']) . '" alt="Image du produit ' . htmlspecialchars($product['titre']) . '">';
+                            echo '      </a>';
+                            
+                            // Lightbox HTML
+                            echo '  <div id="lightbox' . $product['id'] . '" class="lightbox">';
+                            echo '      <a href="#" class="close">&times;</a>';
+                            echo '      <img src="../' . htmlspecialchars($product['link']) . '" alt="Image du produit en grand">';
+                            echo '  </div>';
                         } else {
                             echo '      <img src="../images/default.jpg" alt="Image par défaut pour le produit">';
                         }
