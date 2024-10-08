@@ -127,3 +127,62 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+/* ----------------- STYLES POUR LES CARTES PRODUITS ------------------- */
+
+.product-section {
+    padding: 20px 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff; /* Fond blanc pour chaque carte produit */
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-info {
+    max-width: 60%;
+    text-align: left;
+}
+
+.product-info .product-title {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-info .product-description {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.product-image {
+    flex-shrink: 0;
+}
+
+.product-image img {
+    max-width: 200px;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}

@@ -65,3 +65,31 @@
         margin-top: 10px; /* Ajoute une marge au-dessus pour espacer du texte du footer */
     }  
 }
+
+/* Media Queries pour rendre la liste de produits responsive */
+@media (max-width: 768px) {
+    .product-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-info {
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .product-image img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-info .product-title {
+        font-size: 1.2em;
+    }
+
+    .product-info .product-description {
+        font-size: 1em;
+    }
+}
