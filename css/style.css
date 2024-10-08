@@ -41,6 +41,7 @@ header {
 .topnav a:hover {
     background-color: #ddd;
     color: black;
+    transition: background-color 0.2s ease;
 }
 
 /* Add a color to the active/current link */
