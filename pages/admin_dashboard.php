@@ -44,6 +44,14 @@ if (!isset($_SESSION['user_id'])) {
         <h1>Bienvenue sur le tableau de bord, <?php echo $_SESSION['user_id']; ?> !</h1>
 
         <p>Contenu réservé aux administrateurs.</p>
+
+        <!-- Section pour les boxes -->
+        <section class="dashboard">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+            <div class="box">Box 4</div>
+        </section>
     </main>
     
     <footer>
