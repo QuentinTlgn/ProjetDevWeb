@@ -36,7 +36,9 @@
     </header>
 
     <main>
-        <h1>Nos Produits</h1>
+        <section>
+            <h1>Nos Produits</h1>
+        </section>
 
         <!-- Section des produits -->
         <section class="product-section">
@@ -75,7 +77,7 @@
                             echo '      <img src="../' . htmlspecialchars($product['link']) . '" alt="Image du produit en grand">';
                             echo '  </div>';
                         } else {
-                            echo '      <img src="../images/default.jpg" alt="Image par défaut pour le produit">';
+                            echo '      <img src="../images/logo.png" alt="Image par défaut pour le produit">';
                         }
                         
                         echo '  </div>';
