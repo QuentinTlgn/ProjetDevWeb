@@ -64,10 +64,7 @@
         margin-right: 0; /* Enlève la marge à droite */
         margin-top: 10px; /* Ajoute une marge au-dessus pour espacer du texte du footer */
     }  
-}
 
-/* Media Queries pour rendre la liste de produits responsive */
-@media (max-width: 768px) {
     .product-card {
         flex-direction: column;
         text-align: center;
@@ -76,11 +73,17 @@
     .product-info {
         max-width: 100%;
         margin-bottom: 15px;
+        text-align: center;
     }
 
     .product-image img {
         max-width: 100%;
         height: auto;
+    }
+
+    .box {
+        flex: 0 0 90%; /* Une seule box par ligne sur les petits écrans, avec 20px de marge de chaque côté */
+        margin: 10px; /* Ajouter une marge de 10px autour de chaque box */
     }
 }
 
