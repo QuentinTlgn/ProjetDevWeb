@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/mediaQueries.css">
     
     <link rel="icon" href="../images/favicon.ico" />
-    <title>Descriptions</title>
+    <title>Rue Des Potiers - Descriptions</title>
 </head>
 <body>
     <header>

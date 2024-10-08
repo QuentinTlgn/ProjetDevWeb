@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/mediaQueries.css">
     
     <link rel="icon" href="../images/favicon.ico" />
-    <title>Administration</title>
+    <title>Rue Des Potiers - Administration</title>
 </head>
 <body>
 
