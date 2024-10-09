@@ -1,1 +1,3 @@
 Retirer lightbox quand pas d'image sinon cela fait quelque chose de moche
+
+Admin dashboard : Modifier le fait que la partie produits casse le responsive (taille de bloc fixée et passer boutons en dessous lors de la taille)

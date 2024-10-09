@@ -248,3 +248,86 @@ footer {
     margin: 20px 0; /* Marge autour du message */
     font-weight: bold; /* Texte en gras */
 }
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+/* Style pour les boutons Modifier et Supprimer */
+button.edit-btn, button.delete-btn {
+    padding: 10px 20px;  /* Ajustement du padding pour la taille uniforme */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;      /* Utilisation d'une unité relative */
+    width: 100%;          /* Les boutons s'étendront à la largeur du conteneur */
+    max-width: 150px;     /* Limite la largeur maximale pour rester lisible */
+    margin: 5px 0;        /* Espacement vertical entre les boutons */
+    transition: background-color 0.3s, opacity 0.3s; /* Animation pour le survol */
+}
+
+/* Couleur pour le bouton Modifier */
+button.edit-btn {
+    background-color: #0d76d8; /* Vert */
+    color: white;
+}
+
+/* Couleur pour le bouton Supprimer */
+button.delete-btn {
+    background-color: #f44336; /* Rouge */
+    color: white;
+}
+
+/* Ajouter une transition pour un effet de survol */
+button.edit-btn:hover, button.delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* Style pour la table */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Évite les doubles bordures */
+}
+
+/* Style pour les lignes de la table */
+table tbody tr {
+    border-bottom: 1px solid #ddd; /* Ligne de séparation en bas des lignes */
+}
+
+table tbody tr:last-child {
+    border-bottom: none; /* Enlève la bordure du dernier élément */
+}
+
+/* Style pour les cellules de la table */
+td {
+    padding: 10px; /* Espacement intérieur */
+}
