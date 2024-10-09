@@ -275,47 +275,30 @@ footer {
     top: 10px;
     right: 10px;
     cursor: pointer;
-    background: #ff5c5c;
+    background: #ff5c5c; /* Couleur rouge */
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 50%;
+    padding: 0; /* Enlever le padding pour éviter d'affecter la taille */
+    width: 30px; /* Largeur fixe pour un carré */
+    height: 30px; /* Hauteur fixe pour un carré */
+    display: flex; /* Utilisation de flexbox pour le centrage */
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    font-size: 16px; /* Ajuster la taille de la police */
 }
 
-/* Style pour les boutons Modifier et Supprimer */
-button.edit-btn, button.delete-btn {
-    padding: 10px 20px;  /* Ajustement du padding pour la taille uniforme */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;      /* Utilisation d'une unité relative */
-    width: 100%;          /* Les boutons s'étendront à la largeur du conteneur */
-    max-width: 150px;     /* Limite la largeur maximale pour rester lisible */
-    margin: 5px 0;        /* Espacement vertical entre les boutons */
-    transition: background-color 0.3s, opacity 0.3s; /* Animation pour le survol */
+/* Ajout d'un effet de survol pour le bouton */
+.close-btn:hover {
+    background: #ff3d3d; /* Couleur rouge plus foncé au survol */
 }
 
-/* Couleur pour le bouton Modifier */
-button.edit-btn {
-    background-color: #0d76d8; /* Vert */
-    color: white;
-}
-
-/* Couleur pour le bouton Supprimer */
-button.delete-btn {
-    background-color: #f44336; /* Rouge */
-    color: white;
-}
-
-/* Ajouter une transition pour un effet de survol */
-button.edit-btn:hover, button.delete-btn:hover {
-    opacity: 0.8;
-}
 
 /* Style pour la table */
 table {
     width: 100%;
     border-collapse: collapse; /* Évite les doubles bordures */
+    overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
+    display: block; /* Transforme la table en bloc pour le défilement */
 }
 
 /* Style pour les lignes de la table */
@@ -328,6 +311,37 @@ table tbody tr:last-child {
 }
 
 /* Style pour les cellules de la table */
-td {
+td, th {
     padding: 10px; /* Espacement intérieur */
+    text-align: left; /* Aligner le texte à gauche */
 }
+
+/* Styles pour les boutons dans le tableau */
+button.edit-btn, button.delete-btn {
+    padding: 10px 15px; /* Ajustement du padding pour la taille uniforme */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem; /* Utilisation d'une unité relative */
+    width: 100%; /* Les boutons s'étendront à la largeur du conteneur */
+    max-width: 120px; /* Limite la largeur maximale pour rester lisible */
+    margin: 5px 0; /* Espacement vertical entre les boutons */
+}
+
+/* Couleur pour le bouton Modifier */
+button.edit-btn {
+    background-color: #4CAF50; /* Vert */
+    color: white;
+}
+
+/* Couleur pour le bouton Supprimer */
+button.delete-btn {
+    background-color: #f44336; /* Rouge */
+    color: white;
+}
+
+/* Ajouter une transition pour un effet de survol */
+button.edit-btn:hover, button.delete-btn:hover {
+    opacity: 0.8; /* Effet de survol */
+}
+

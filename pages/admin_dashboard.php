@@ -105,50 +105,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
                     <a class="success-message">Produit ajouté avec succès !</a>
                 <?php endif; ?>
             </div>
-            <div class="box">
-            <h2>Liste des produits</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Titre</th>
-                        <th>Description</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Récupérer les produits et leurs images
-                    $sql = "SELECT p.id, p.titre, p.description, i.link AS image 
-                            FROM produits p 
-                            LEFT JOIN images_produits i ON p.id = i.idProduit";
-                    $stmt = $pdo->query($sql);
 
-                    if ($stmt->rowCount() > 0) {
-                        // Afficher chaque produit
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<tr>";
-                            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['titre']) . "</td>";
-                            echo "<td>" . htmlspecialchars($row['description']) . "</td>";
-                            echo "<td>
-                                    <button class='edit-btn' data-id='" . $row['id'] . "' data-titre='" . htmlspecialchars($row['titre']) . "' data-description='" . htmlspecialchars($row['description']) . "'>Modifier</button>
-                                    <button class='delete-btn' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce produit ?\");'>Supprimer</button>
-                                    </td>";
-                            echo "</tr>";
+            <div class="box">
+                <h2>Liste des produits</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les produits et leurs images
+                        $sql = "SELECT p.id, p.titre, p.description, i.link AS image 
+                                FROM produits p 
+                                LEFT JOIN images_produits i ON p.id = i.idProduit";
+                        $stmt = $pdo->query($sql);
+
+                        if ($stmt->rowCount() > 0) {
+                            // Afficher chaque produit
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>";
+                                echo "<td data-label='ID'>" . htmlspecialchars($row['id']) . "</td>";
+                                echo "<td data-label='Titre'>" . htmlspecialchars($row['titre']) . "</td>";
+                                echo "<td data-label='Description'>" . htmlspecialchars($row['description']) . "</td>";
+                                echo "<td data-label='Actions'>
+                                        <button class='edit-btn' data-id='" . $row['id'] . "' data-titre='" . htmlspecialchars($row['titre']) . "' data-description='" . htmlspecialchars($row['description']) . "'>Modifier</button>
+                                        <button class='delete-btn' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce produit ?\");'>Supprimer</button>
+                                      </td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='4'>Aucun produit trouvé.</td></tr>";
                         }
-                    } else {
-                        echo "<tr><td colspan='5'>Aucun produit trouvé.</td></tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
+                        ?>
+                    </tbody>
+                </table>
                 <?php if (isset($_GET['success']) && $_GET['success'] == 2): ?>
                     <a class="success-message">Produit modifié avec succès !</a>
                 <?php elseif (isset($_GET['success']) && $_GET['success'] == 3): ?>
                     <a class="success-message">Produit supprimé avec succès !</a>
                 <?php endif; ?>
             </div>
+
 
                         <!-- Popup (lightbox) pour modifier un produit -->
             <div class="popup" id="popup">
@@ -158,10 +160,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
                     <form action="../php/modifier_produit.php" method="post" id="editForm">
                         <input type="hidden" id="editId" name="id">
 
-                        <label for="editTitre">Titre:</label>
+                        <label for="editTitre">Titre du produit :</label>
                         <input type="text" id="editTitre" name="titre" required>
 
-                        <label for="editDescription">Description:</label>
+                        <label for="editDescription">Description du produit :</label>
                         <input type="text" id="editDescription" name="description" required>
 
                         <button type="submit" name="modifier">Enregistrer les modifications</button>

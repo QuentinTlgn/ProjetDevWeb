@@ -85,6 +85,35 @@
         flex: 0 0 90%; /* Une seule box par ligne sur les petits écrans, avec 20px de marge de chaque côté */
         margin: 10px; /* Ajouter une marge de 10px autour de chaque box */
     }
+
+    table {
+        display: block; /* Transforme la table en bloc pour le défilement */
+        overflow-x: auto; /* Permet le défilement horizontal */
+    }
+
+    table thead {
+        display: none; /* Cache l'en-tête sur les petits écrans */
+    }
+
+    table tr {
+        display: flex; /* Utilise flexbox pour les lignes */
+        flex-direction: column; /* Affiche les lignes en colonne */
+        border-bottom: 1px solid #ddd; /* Ajoute une bordure pour séparer les lignes */
+        margin-bottom: 10px; /* Espacement entre les lignes */
+    }
+
+    table td {
+        display: flex; /* Utilise flexbox pour les cellules */
+        justify-content: space-between; /* Espace entre le label et la valeur */
+        padding: 10px; /* Espacement intérieur */
+        border-bottom: none; /* Enlève la bordure entre les cellules */
+    }
+
+    table td::before {
+        content: attr(data-label); /* Utilise l'attribut data-label pour les labels */
+        font-weight: bold; /* Met les labels en gras */
+        margin-right: 10px; /* Espacement entre le label et la valeur */
+    }
 }
 
 @media (max-width: 480px) {
