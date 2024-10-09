@@ -45,11 +45,6 @@ if (!isset($_SESSION['user_id'])) {
 
         <p>Contenu réservé aux administrateurs.</p>
 
-        <!-- Afficher le message de succès si présent -->
-        <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-            <div class="success-message">Produit ajouté avec succès !</div>
-        <?php endif; ?>
-
         <!-- Section pour les boxes -->
         <section class="dashboard">
             <div class="box">
@@ -66,6 +61,10 @@ if (!isset($_SESSION['user_id'])) {
                         
                     <button type="submit">Ajouter Produit</button>
                 </form>
+                        <!-- Afficher le message de succès si présent -->
+                <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+                    <a class="success-message">Produit ajouté avec succès !</a>
+                <?php endif; ?>
             </div>
             <div class="box">Box 2</div>
             <div class="box">Box 3</div>
