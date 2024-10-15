@@ -20,8 +20,6 @@ ON ruedespotiers.*
 TO 'ruedespotiersadm'@'localhost'
 WITH GRANT OPTION;
 
-#Test
-
 #Création de la table contenant les utilisateurs admins
 CREATE OR REPLACE TABLE admins (username VARCHAR(50), password VARCHAR(50));
 INSERT INTO admins VALUES ('admin', 'admin3il');
