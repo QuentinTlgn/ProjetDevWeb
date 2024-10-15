@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Vérifier si le dossier de destination existe
         if (!is_dir($uploadDir)) {
-            die("Le dossier de destination n'existe pas.");
+            die("Le dossier de destination $uploadDir n'existe pas.");
         }
 
         // Déplacer le fichier téléchargé vers le dossier de destination
