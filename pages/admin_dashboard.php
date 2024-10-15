@@ -173,7 +173,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
                 </div>
             </div>
 
-            <div class="box">Box 3</div>
+            <div class="box">
+                <h2>Informations de contact</h2>
+                <form action="../php/modifier_contact.php" method="post" id="editContactForm">
+                    <!-- Champs pré-remplis avec les infos actuelles de contact -->
+                    <label for="editAdresse">Adresse :</label>
+                    <input type="text" id="editAdresse" name="adresse" value="" required>
+
+                    <label for="editNom">Nom :</label>
+                    <input type="text" id="editNom" name="nom" value="" required>
+
+                    <label for="editMail">E-mail :</label>
+                    <input type="email" id="editMail" name="mail" value="" required>
+
+                    <label for="editTelephone">Téléphone :</label>
+                    <input type="tel" id="editTelephone" name="telephone" value="" required>
+
+                    <button type="submit" name="modifier_contact">Enregistrer les modifications</button>
+                </form>
+                <?php if (isset($_GET['success']) && $_GET['success'] == 4): ?>
+                    <a class="success-message">Infos de contact modifiées avec succès !</a>
+                <?php endif; ?>
+            </div>
+
             <div class="box">Box 4</div>
         </section>
     </main>
@@ -185,5 +207,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
 
 <script src="../js/burgerMenu.js"></script>
 <script src="../js/editProduct.js"></script>        
+
+<?php
+// Inclure la connexion à la base de données
+include('../php/db.php');
+
+// Récupérer les informations de contact
+$sql = "SELECT * FROM contacts";
+$stmt = $pdo->query($sql);
+$contacts = $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // Récupère les contacts sous forme de tableau clé => valeur
+?>
+
+<script>
+    // Pré-remplir les champs du formulaire avec les informations actuelles
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('editAdresse').value = "<?php echo $contacts['adresse']; ?>";
+        document.getElementById('editNom').value = "<?php echo $contacts['nom']; ?>";
+        document.getElementById('editMail').value = "<?php echo $contacts['mail']; ?>";
+        document.getElementById('editTelephone').value = "<?php echo $contacts['telephone']; ?>";
+    });
+</script>
+
 
 </html>
