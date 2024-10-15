@@ -1,7 +1,7 @@
 /* mediaQueries.css */
 
 /* Media Query pour les petits écrans (mobile) */
-@media (max-width: 768px) {
+@media (max-width: 813px) {
 
     footer {
         flex-direction: column; /* Aligne les éléments verticalement */
