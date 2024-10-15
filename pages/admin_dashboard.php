@@ -151,13 +151,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
                 <?php endif; ?>
             </div>
 
-
-                        <!-- Popup (lightbox) pour modifier un produit -->
+            <!-- Popup (lightbox) pour modifier un produit -->
             <div class="popup" id="popup">
                 <div class="popup-content">
                     <button class="close-btn" id="closePopup">X</button>
                     <h2>Modifier le produit</h2>
-                    <form action="../php/modifier_produit.php" method="post" id="editForm">
+                    <form action="../php/modifier_produit.php" method="post" id="editForm" enctype="multipart/form-data">
                         <input type="hidden" id="editId" name="id">
 
                         <label for="editTitre">Titre du produit :</label>
@@ -165,6 +164,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
 
                         <label for="editDescription">Description du produit :</label>
                         <input type="text" id="editDescription" name="description" required>
+
+                        <label for="editImage">Image du produit :</label>
+                        <input type="file" id="editImage" name="image" accept="image/*">
 
                         <button type="submit" name="modifier">Enregistrer les modifications</button>
                     </form>
