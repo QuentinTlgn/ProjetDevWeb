@@ -1,6 +1,6 @@
 <?php
 $host = 'mysql-kskskzkz.alwaysdata.net'; // L'adresse du serveur
-$dbname = 'kskskzkz_web'; // Nom de votre base de données
+$dbname = 'kskskzkz_ruedespotiers'; // Nom de votre base de données
 $user = 'kskskzkz'; // Nom d'utilisateur
 $pass = 'ojuhuhudhfsuihdiudhsouj'; // Mot de passe
 

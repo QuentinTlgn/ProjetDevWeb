@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $imageName = $_FILES['image']['name'];
 
         // Définir le chemin de destination pour l'image
-        $uploadDir = __DIR__ . '/../images/produits/'; // Utilisez __DIR__ pour obtenir le chemin absolu
+        $uploadDir = __DIR__ . '../images/produits/';
         $uploadFilePath = $uploadDir . basename($imageName);
 
         // Vérifier si le dossier de destination existe

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
     // Vérifier si une nouvelle image a été uploadée
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         // Chemin vers le dossier où les images sont stockées
-        $targetDir = "../images/pots/";
+        $targetDir = "../images/produits/";
         $imageFileType = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
         $targetFile = $targetDir . "pot" . $id . "." . $imageFileType; // Renomme l'image selon l'ID du produit
 

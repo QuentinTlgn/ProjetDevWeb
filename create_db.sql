@@ -46,6 +46,6 @@ INSERT INTO produits (id, titre, description) VALUES
 
 -- Insertion des images associées dans la table 'images_produits'
 INSERT INTO images_produits (idProduit, link) VALUES
-(1, '../images/pots/pot1.jpg'),
-(2, '../images/pots/pot2.jpg'),
-(3, '../images/pots/pot3.jpg');
+(1, '../images/produits/pot1.jpg'),
+(2, '../images/produits/pot2.jpg'),
+(3, '../images/produits/pot3.jpg');
