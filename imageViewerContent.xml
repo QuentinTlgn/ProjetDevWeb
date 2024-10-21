@@ -2,14 +2,14 @@
 <images>
     <image>
         <title>Pot 1</title>
-        <path>/images/pots/pot1.jpg</path>
+        <path>/images/produits/pot1.jpg</path>
     </image>
     <image>
         <title>Pot 2</title>
-        <path>/images/pots/pot2.jpg</path>
+        <path>/images/produits/pot2.jpg</path>
     </image>
         <image>
         <title>Pot 3</title>
-        <path>/images/pots/pot3.jpg</path>
+        <path>/images/produits/pot3.jpg</path>
     </image>
 </images>
