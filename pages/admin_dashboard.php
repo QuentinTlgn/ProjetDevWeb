@@ -15,6 +15,10 @@ include('../php/db.php');
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <?php
+        header('Cache-Control: max-age=604800'); // Cache-Control en PHP
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + (60*60*24*45)) . ' GMT'); // Expires en PHP 
+    ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/policies.css">
