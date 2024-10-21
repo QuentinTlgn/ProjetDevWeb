@@ -7,45 +7,8 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: admin_login.php");
     exit();
 }
-?>
 
-<?php
-
-// Inclure la connexion à la base de données
 include('../php/db.php');
-
-// Préparer une variable pour stocker le produit à modifier si sélectionné
-$produitAModifier = null;
-
-// Si un produit est sélectionné pour modification (paramètre GET 'id')
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-
-    // Récupérer les informations du produit
-    $sql = "SELECT p.id, p.titre, p.description, i.link AS image 
-            FROM produits p 
-            LEFT JOIN images_produits i ON p.id = i.idProduit 
-            WHERE p.id = ?";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$id]);
-    $produitAModifier = $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-// Si le formulaire de modification est soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
-    $id = $_POST['id'];
-    $titre = $_POST['titre'];
-    $description = $_POST['description'];
-
-    // Mettre à jour les informations du produit
-    $updateSQL = "UPDATE produits SET titre = ?, description = ? WHERE id = ?";
-    $stmt = $pdo->prepare($updateSQL);
-    $stmt->execute([$titre, $description, $id]);
-
-    // Rediriger avec un message de succès
-    header("Location: admin_dashboard.php?success=2");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -134,8 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
                                 echo "<td data-label='Description'>" . htmlspecialchars($row['description']) . "</td>";
                                 echo "<td data-label='Actions'>
                                         <button class='edit-btn' data-id='" . $row['id'] . "' data-titre='" . htmlspecialchars($row['titre']) . "' data-description='" . htmlspecialchars($row['description']) . "'>Modifier</button>
-                                        <button class='delete-btn' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce produit ?\");'>Supprimer</button>
-                                      </td>";
+                                        <button class='delete-btn' data-id='" . $row['id'] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer ce produit ?\");'>Supprimer</button>
+                                    </td>";
                                 echo "</tr>";
                             }
                         } else {
@@ -207,26 +170,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
 
 <script src="../js/burgerMenu.js"></script>
 <script src="../js/editProduct.js"></script>        
-
-<?php
-// Inclure la connexion à la base de données
-include('../php/db.php');
-
-// Récupérer les informations de contact
-$sql = "SELECT * FROM contacts";
-$stmt = $pdo->query($sql);
-$contacts = $stmt->fetchAll(PDO::FETCH_KEY_PAIR); // Récupère les contacts sous forme de tableau clé => valeur
-?>
-
-<script>
-    // Pré-remplir les champs du formulaire avec les informations actuelles
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('editAdresse').value = "<?php echo $contacts['adresse']; ?>";
-        document.getElementById('editNom').value = "<?php echo $contacts['nom']; ?>";
-        document.getElementById('editMail').value = "<?php echo $contacts['mail']; ?>";
-        document.getElementById('editTelephone').value = "<?php echo $contacts['telephone']; ?>";
-    });
-</script>
+<?php include('../php/remplissage_auto_admin.php'); ?> 
 
 
 </html>
