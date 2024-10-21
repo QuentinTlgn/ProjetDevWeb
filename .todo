@@ -2,5 +2,4 @@ Retirer lightbox quand pas d'image sinon cela fait quelque chose de moche
 
 Repartir CSS dans plusieurs pages pour les css spécifiques à une page
 
-Corriger pb upload image via ajouter_produit 
-Corriger pb suppression de produits
+Demander M. Moly que faire pour l'imageViewer. Chargement au démarrage dans le cache, etc ??
