@@ -233,6 +233,8 @@ footer {
 }
 
 .box {
+    overflow-y: auto;
+    max-height: 510px;
     flex: 0 0 calc(45% - 20px); /* Chaque box prend 50% de la largeur moins l'espacement */
     margin-bottom: 20px; /* Espacement entre les lignes */
     padding: 20px;
