@@ -77,7 +77,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
     </main>
     
     <footer>
-        <div class="footer-text">&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</div>
+        <div class="footer-text">&copy; 2024 Rue Des Potiers. Tous droits réservés.</div>
         <a href="/pages/admin_login.php" class="footer-link">Administration</a>
     </footer>
 
