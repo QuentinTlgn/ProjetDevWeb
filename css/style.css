@@ -249,7 +249,7 @@ footer {
     font-weight: bold; /* Texte en gras */
 }
 
-.popup {
+.popup, .userPopup {
     display: none;
     position: fixed;
     z-index: 10;
@@ -317,7 +317,7 @@ td, th {
 }
 
 /* Styles pour les boutons dans le tableau */
-button.edit-btn, button.delete-btn {
+button.edit-btn, button.delete-btn, button.edit-user-btn, button.delete-user-btn {
     padding: 10px 15px; /* Ajustement du padding pour la taille uniforme */
     border: none;
     border-radius: 5px;
@@ -329,13 +329,13 @@ button.edit-btn, button.delete-btn {
 }
 
 /* Couleur pour le bouton Modifier */
-button.edit-btn {
+button.edit-btn, button.edit-user-btn {
     background-color: #4CAF50; /* Vert */
     color: white;
 }
 
 /* Couleur pour le bouton Supprimer */
-button.delete-btn {
+button.delete-btn, button.delete-user-btn {
     background-color: #f44336; /* Rouge */
     color: white;
 }

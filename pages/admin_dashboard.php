@@ -43,7 +43,7 @@ include('../php/db.php');
     </header>
 
     <main>
-        <h1>Bienvenue sur le tableau de bord, <?php echo $_SESSION['user_id']; ?> !</h1>
+        <h1>Bienvenue <?php echo $_SESSION['user_id']; ?> !</h1>
 
         <p>Contenu réservé aux administrateurs.</p>
 
@@ -114,7 +114,6 @@ include('../php/db.php');
                 <?php endif; ?>
             </div>
 
-            <!-- Popup (lightbox) pour modifier un produit -->
             <div class="popup" id="popup">
                 <div class="popup-content">
                     <button class="close-btn" id="closePopup">X</button>
@@ -159,7 +158,76 @@ include('../php/db.php');
                 <?php endif; ?>
             </div>
 
-            <div class="box">Box 4</div>
+            <div class="box">
+                <h2>Ajouter un admin</h2>
+                <form action="../php/ajouter_utilisateur.php" method="post">
+                    <label for="newUsername">Nom d'utilisateur:</label>
+                    <input type="text" id="newUsername" name="username" required>
+                    <label for="newPassword">Mot de passe:</label>
+                    <input type="password" id="newPassword" name="password" required>
+                    <button type="submit">Ajouter utilisateur</button>
+                </form>
+                <?php if (isset($_GET['success']) && $_GET['success'] == 5): ?>
+                    <a class="success-message">Utilisateur ajouté avec succès !</a>
+                <?php endif; ?>
+            </div>
+
+            <div class="box">
+                <h2>Liste des admins</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Utilisateur</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les utilisateurs
+                        $sql = "SELECT username FROM admins";
+                        $stmt = $pdo->query($sql);
+
+                        if ($stmt->rowCount() > 0) {
+                            // Afficher chaque utilisateur
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>";
+                                echo "<td data-label='Utilisateur'>" . htmlspecialchars($row['username']) . "</td>";
+                                echo "<td data-label='Actions'>
+                                        <button class='edit-user-btn' data-username='" . htmlspecialchars($row['username']) . "'>Modifier</button>
+                                        <button class='delete-user-btn' data-username='" . htmlspecialchars($row['username']) . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet utilisateur ?\");'>Supprimer</button>
+                                    </td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='2'>Aucun utilisateur trouvé.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <?php if (isset($_GET['success']) && $_GET['success'] == 6): ?>
+                    <a class="success-message">Utilisateur modifié avec succès !</a>
+                <?php elseif (isset($_GET['success']) && $_GET['success'] == 7): ?>
+                    <a class="success-message">Utilisateur supprimé avec succès !</a>
+                <?php endif; ?>
+            </div>
+                <!-- Popup (lightbox) pour modifier un utilisateur -->
+            <div class="popup" id="userPopup">
+                <div class="popup-content">
+                    <button class="close-btn" id="closeUserPopup">X</button>
+                    <h2>Modifier l'admin</h2>
+                    <form action="../php/modifier_utilisateur.php" method="post" id="editUserForm">
+                        <input type="hidden" id="editUsername" name="oldUsername">
+
+                        <label for="newUsername">Nouveau nom d'utilisateur :</label>
+                        <input type="text" id="newEditUsername" name="newUsername" required>
+
+                        <label for="newPassword">Nouveau mot de passe :</label>
+                        <input type="password" id="newEditPassword" name="newPassword">
+
+                        <button type="submit" name="modifier_utilisateur">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
     
@@ -169,8 +237,8 @@ include('../php/db.php');
 </body>
 
 <script src="../js/burgerMenu.js"></script>
-<script src="../js/editProduct.js"></script>        
+<script src="../js/editProduct.js"></script>    
+<script src="../js/editUser.js"></script>    
 <?php include('../php/remplissage_auto_admin.php'); ?> 
-
 
 </html>
