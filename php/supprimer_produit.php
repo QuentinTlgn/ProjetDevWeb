@@ -3,7 +3,7 @@ session_start();
 
 // Vérifier si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
-    header("Location: ../pages/administration.php");
+    header("Location: ../pages/admin_login.php");
     exit();
 }
 
@@ -14,6 +14,12 @@ include('../php/db.php');
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
+    // Récupérer le lien de l'image avant de supprimer l'entrée dans la base de données
+    $sqlGetImageLink = "SELECT link FROM images_produits WHERE idProduit = ?";
+    $stmt = $pdo->prepare($sqlGetImageLink);
+    $stmt->execute([$id]);
+    $imageLink = $stmt->fetchColumn();
+
     // Supprimer l'image associée au produit
     $sqlImage = "DELETE FROM images_produits WHERE idProduit = ?";
     $stmt = $pdo->prepare($sqlImage);
@@ -23,6 +29,13 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM produits WHERE id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
+
+    // Supprimer le fichier image du serveur
+    if ($imageLink) {
+        if (file_exists($imageLink)) {
+            unlink($imageLink);
+        }
+    }
 
     // Rediriger avec un message de succès
     header("Location: ../pages/admin_dashboard.php?success=3");
