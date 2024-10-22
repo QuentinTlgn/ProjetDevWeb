@@ -49,3 +49,10 @@ INSERT INTO images_produits (idProduit, link) VALUES
 (1, '../images/produits/pot1.jpg'),
 (2, '../images/produits/pot2.jpg'),
 (3, '../images/produits/pot3.jpg');
+
+CREATE OR REPLACE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    type VARCHAR(50),
+    description VARCHAR(512),
+    date DATETIME DEFAULT CURRENT_TIMESTAMP
+);
