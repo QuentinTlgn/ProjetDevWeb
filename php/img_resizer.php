@@ -54,12 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
         if(!isset(($_GET['imageUrl'])) || (!isset($_GET['width'])) || (!isset($_GET['height']))){
             echo "Mauvais nombre d'argument fournis";
-            echo $_GET['imageUrl'];
-            echo $_GET['width'];
-            echo $_GET['height'];
-            echo isset($_GET['imageUrl']);
-            echo isset($_GET['width']);
-            echo isset($_GET['height']);
             exit();
         }
     
