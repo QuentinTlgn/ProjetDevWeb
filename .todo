@@ -2,4 +2,6 @@ Retirer lightbox quand pas d'image sinon cela fait quelque chose de moche
 
 Repartir CSS dans plusieurs pages pour les css spécifiques à une page
 
-Demander M. Moly que faire pour l'imageViewer. Chargement au démarrage dans le cache, etc ??
+Demander M. Moly que faire pour l'imageViewer. Chargement au démarrage dans le cache, etc ??*
+
+Corriger pb annuler sur les demandes de verification
