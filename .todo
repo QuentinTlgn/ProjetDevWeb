@@ -1,7 +1,15 @@
-Retirer lightbox quand pas d'image sinon cela fait quelque chose de moche
-
-Repartir CSS dans plusieurs pages pour les css spécifiques à une page
-
-Demander M. Moly que faire pour l'imageViewer. Chargement au démarrage dans le cache, etc ??*
+[?] Repartir CSS dans plusieurs pages pour les css spécifiques à une page
 
 Corriger pb annuler sur les demandes de verification
+
+Remarques M. Moly : 
+
+Revoir scénario d'utilisation
+
+Guider mieux l'utilisateur sur les pages (Bouton directement sur les pages pour switcher et suivre la "visite" du site)
+
+ImageViewer : Récupérer les images déjà mises en cache. Retailler les images
+Si temps : Revoir la présentation du Carrousel et utiliser les images mises en place dans images/produits
+
+Aller voir sur un vrai site de Potier pour voir description, images etc...
+
