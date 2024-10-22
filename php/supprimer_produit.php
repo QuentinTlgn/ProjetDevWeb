@@ -7,8 +7,9 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Inclure la connexion à la base de données
+// Inclure la connexion à la base de données et les fonctions de logs
 include('../php/db.php');
+include('../php/log_functions.php');
 
 // Vérifier si un ID de produit est passé en paramètre
 if (isset($_GET['id'])) {
@@ -36,6 +37,9 @@ if (isset($_GET['id'])) {
             unlink($imageLink);
         }
     }
+
+    // Ajouter un log pour la suppression du produit
+    ajouter_log($pdo, 'Suppression Produit', "{$_SESSION['user_id']} a supprimé le produit avec l'ID $id.");
 
     // Rediriger avec un message de succès
     header("Location: ../pages/admin_dashboard.php?success=3");

@@ -36,6 +36,7 @@
         <h1>Authentification</h1>
 
         <?php
+            include '../php/log_functions.php'; // Inclure la fonction d'ajout de log
             session_start(); // Démarre une session
 
             // Vérifier si l'utilisateur est déjà connecté
@@ -65,7 +66,10 @@
                     if ($password === $user['password']) {
                         // Authentification réussie
                         $_SESSION['user_id'] = $user['username'];
-                    
+
+                        // Ajouter une log pour l'ajout du produit (succès)
+                        ajouter_log($pdo, 'Connexion', "{$_SESSION['user_id']} s'est connecté");
+
                         // Redirection vers une page protégée
                         header("Location: admin_dashboard.php"); // Remplacez par la page cible
                         exit(); // Assure-toi que le script s'arrête après la redirection

@@ -8,8 +8,9 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Inclure le fichier de connexion à la base de données
+// Inclure le fichier de connexion à la base de données et le fichier de logs
 include 'db.php'; // Assurez-vous que le chemin est correct
+include 'log_functions.php'; // Inclure la fonction d'ajout de log
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -27,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Vérifier si le dossier de destination existe
         if (!is_dir($uploadDir)) {
-            die("Le dossier de destination $uploadDir n'existe pas. et $imageTmpPath");
+            die("Le dossier de destination $uploadDir n'existe pas.");
         }
 
         try {
@@ -51,6 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $stmt = $pdo->prepare("INSERT INTO images_produits (idProduit, link) VALUES (:idProduit, :link)");
                 $stmt->execute(['idProduit' => $idProduit, 'link' => $uploadDir . $newImageName]);
 
+                // Ajouter une log pour l'ajout du produit (succès)
+                ajouter_log($pdo, 'Ajout de produit', "Produit ID $idProduit - $titre ajouté par {$_SESSION['user_id']}");
+
                 // Redirection vers le tableau de bord après l'ajout
                 header("Location: ../pages/admin_dashboard.php?success=1");
                 exit(); // Assurez-vous de quitter après la redirection
@@ -58,7 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 die("Erreur lors du téléchargement de l'image.");
             }
         } catch (PDOException $e) {
-            // Gérer les erreurs
             echo "Erreur: " . $e->getMessage();
         }
     } else {

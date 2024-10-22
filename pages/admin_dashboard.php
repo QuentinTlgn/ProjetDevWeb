@@ -232,6 +232,41 @@ include('../php/db.php');
                     </form>
                 </div>
             </div>
+
+            <div class="box">
+                <h2>Logs</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les logs avec la date
+                        $sql = "SELECT date, type, description FROM logs ORDER BY id DESC";  // Sélectionner la colonne date
+                        $stmt = $pdo->query($sql);
+                            
+                        if ($stmt->rowCount() > 0) {
+                            // Afficher chaque log
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>";
+                                echo "<td data-label='Date'>" . htmlspecialchars($row['date']) . "</td>";  // Afficher la date
+                                echo "<td data-label='Type'>" . htmlspecialchars($row['type']) . "</td>";
+                                echo "<td data-label='Description'>" . htmlspecialchars($row['description']) . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='3'>Aucun log trouvé.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+
         </section>
     </main>
     
