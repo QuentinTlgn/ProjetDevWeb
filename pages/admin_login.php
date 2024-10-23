@@ -19,6 +19,9 @@
 
     <header>
         <nav class="topnav">
+            <div class="logo-container"> 
+                <img src="../../images/logotype/logotype_white_subtext.png" alt="Logo"> 
+            </div>
             <div class="burger">
                 <span></span>
                 <span></span>

@@ -8,23 +8,33 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    position: sticky;
+    width: 100%;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
     z-index: 100;
+    background-color: #333;
     box-shadow: 0 2px 5px gray;
 }
 
-/* Add a black background color to the top navigation */
+.logo-container {
+    display: flex;
+    align-items: center; 
+}
+
+/* Style pour le logo */
+.logo-container img {
+    max-width: 150px; /* Taille du logo */
+    height: auto;
+}
+
 .topnav {
     display: flex;
-    flex-grow: 1;
-    justify-content: center;
+    justify-content: space-between; /* Logo à gauche et liens au centre */
+    align-items: center;
+    padding: 0 20px; /* Padding pour espacer le contenu des bords */
+    width: 100%;
+    height: 60px; /* Fixer une hauteur pour le header */
 }
 
 /* Style the links inside the navigation bar */
@@ -122,11 +132,12 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* Styles généraux du menu de navigation */
+/* Styles pour la navbar centrée */
 .nav-center {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px; /* Espacement entre les liens */
+    flex: 1; /* Prend tout l'espace disponible pour centrer les éléments */
 }
 
 /* ----------------- STYLES POUR LES CARTES PRODUITS ------------------- */

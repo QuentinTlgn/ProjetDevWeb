@@ -20,6 +20,9 @@
 <body>
     <header>
         <nav class="topnav">
+            <div class="logo-container"> 
+                <img src="../../images/logotype/logotype_white_subtext.png" alt="Logo"> 
+            </div>
             <div class="burger">
                 <span></span>
                 <span></span>
@@ -28,7 +31,7 @@
             <div class="nav-center">
                 <a href="../index.php">Accueil</a>
                 <a class="active" href="#">Descriptions</a>
-                <a  href="/pages/contact.php">Contact</a>
+                <a href="/pages/contact.php">Contact</a>
                 <?php
                     session_start(); // Démarre la session
                     if (isset($_SESSION['user_id'])) { // Vérifie si l'utilisateur est connecté

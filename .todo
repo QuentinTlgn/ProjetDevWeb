@@ -16,3 +16,8 @@ Si temps : Revoir la présentation du Carrousel et utiliser les images mises en 
 Aller voir sur un vrai site de Potier pour voir description, images etc...
 
 Héberger sur VPS pour avoir une config plus précise sur le reverse proxy
+
+![alt text](image.png)
+
+Voir pour bien centrer la navbar
+https://stackoverflow.com/questions/43595370/center-top-navigation-horizontally-while-leaving-logo-on-the-left-and-language-s
