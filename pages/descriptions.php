@@ -60,6 +60,11 @@
                     $stmt = $pdo->query($query);
                     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+                    // URL de l'image resizer
+                    $resizerUrl = 'http://kskskzkz.alwaysdata.net/php/img_resizer.php';
+                    // URL de base pour les images
+                    $baseUrl = 'http://kskskzkz.alwaysdata.net/'; 
+
                     // Boucle pour afficher chaque produit
                     foreach ($products as $product) {
                         echo '<div class="product-card">';
@@ -71,15 +76,22 @@
                         
                         // Vérifie si un lien d'image est disponible
                         if (!empty($product['link'])) {
+                            // Remise en forme du lien de l'image
+                            $formattedLink = str_replace('../', $baseUrl, $product['link']); 
+
+                            // Construction de l'URL de l'image redimensionnée (taille normale)
+                            $resizedImageUrl = $resizerUrl . '?imageUrl=' . urlencode($formattedLink) . '&width=200&height=150';
+
                             echo '      <a href="#lightbox' . $product['id'] . '">';
-                            echo '          <img src="../' . htmlspecialchars($product['link']) . '" alt="Image du produit ' . htmlspecialchars($product['titre']) . '">';
+                            echo '          <img src="' . $resizedImageUrl . '" alt="Image du produit ' . htmlspecialchars($product['titre']) . '">';
                             echo '      </a>';
                             
-                            // Lightbox HTML
-                            echo '  <div id="lightbox' . $product['id'] . '" class="lightbox">';
-                            echo '      <a href="#" class="close">&times;</a>';
-                            echo '      <img src="../' . htmlspecialchars($product['link']) . '" alt="Image du produit en grand">';
+                            // Lightbox HTML (taille originale - chargement différé)
+                            echo '  <div id="lightbox' . $product['id'] . '" class="lightbox" style="display:none;">';
+                            echo '      <a href="#" class="close">×</a>';
+                            echo '      <img data-src="' . $formattedLink . '" alt="Image du produit en grand" class="lazy">'; // Utilisation de data-src
                             echo '  </div>';
+
                         } else {
                             echo '      <img src="../images/logo.png" alt="Image par défaut pour le produit">';
                         }
@@ -93,12 +105,13 @@
     </main>
 
     <footer>
-        <div class="footer-text">&copy; 2024 Rue Des Potiers. Tous droits réservés.</div>
+        <div class="footer-text">© 2024 Rue Des Potiers. Tous droits réservés.</div>
         <a href="/pages/admin_login.php" class="footer-link">Administration</a>
     </footer>
     
 </body>
 
-<script src="../js/burgerMenu.js"></script> 
+<script src="../js/burgerMenu.js"></script>
+<script src="../js/lazyLoadingProduits.js"></script>
 
 </html>
