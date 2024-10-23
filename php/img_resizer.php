@@ -62,11 +62,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $height = $_GET['height'];
         
         $resizedImage = resizeImageFromUrl($imageUrl, $width, $height);
-        
-        // Définir l'en-tête Content-Type pour indiquer que la réponse est une image JPEG
+
+        // Définir les en-têtes pour la mise en cache
         header('Content-Type: image/jpeg');
-        
-        // Afficher l'image redimensionnée
+        header('Cache-Control: public, max-age=31536000'); // Cache pendant 1 an
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT');
+
+        // Afficher l'image redimensionnée (depuis le cache ou nouvellement générée)
         echo $resizedImage;
     } catch (Exception $e) {
         // Gérer les erreurs
