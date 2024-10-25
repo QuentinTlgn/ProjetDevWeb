@@ -2,6 +2,10 @@
 
 Corriger pb annuler sur les demandes de verification
 
+Permettre la construction de la page accueil via la bdd : 
+Ajout partie admin avec liste des entrées et ajout d'une entrée
+Récupérer les entrées dans la page accueil
+
 Implémenter img_resizer
 
 Remarques M. Moly : 
