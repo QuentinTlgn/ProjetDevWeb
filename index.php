@@ -88,7 +88,7 @@
             }
         ?>
         <!-- HTML !-->
-        <button onclick="location.href='./pages/descriptions.php'"class="button-63" role="button">Convaincu ? Venez voir nos produits !</button>
+        <button onclick="location.href='./pages/descriptions.php'"class="button-63" role="button">Convaincu ? Venez voir nos créations !</button>
     </main>
 
     <footer>

@@ -48,7 +48,7 @@
 
     <main>
         <section>
-            <h1>Nos Produits</h1>
+            <h1>Nos Créations</h1>
         </section>
 
         <!-- Section des produits -->
