@@ -87,10 +87,12 @@
                 echo "Erreur de base de données : " . htmlspecialchars($e->getMessage());
             }
         ?>
+        <!-- HTML !-->
+        <button onclick="location.href='./pages/descriptions.php'"class="button-63" role="button">Convaincu ? Venez voir nos produits !</button>
     </main>
 
     <footer>
-        <div class="footer-text">&copy; 2024 Quentin TAULEIGNE. Tous droits réservés.</div>
+        <div class="footer-text">&copy; 2024 Rue des Potiers. Tous droits réservés.</div>
         <a href="/pages/admin_login.php" class="footer-link">Administration</a>
     </footer>
 

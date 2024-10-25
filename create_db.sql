@@ -63,7 +63,6 @@ CREATE OR REPLACE TABLE accueil_content (
     content VARCHAR(4096)
 );
 
-
 -- Remplissage de la table accueil_content
 -- Titre H1 (1)
 INSERT INTO accueil_content (type, content) VALUES 
