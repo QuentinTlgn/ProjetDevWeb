@@ -32,12 +32,10 @@ header {
     justify-content: space-between; /* Logo à gauche et liens au centre */
     align-items: center;
     width: 100%;
-    height: 60px; /* Fixer une hauteur pour le header */
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-    float: left;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;

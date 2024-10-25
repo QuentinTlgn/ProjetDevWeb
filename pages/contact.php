@@ -3,6 +3,7 @@ session_start(); // Démarre la session
 
 // Inclure le fichier de connexion à la base de données
 include '../php/db.php';
+$config = include '../config.php';
 
 // Récupération des données depuis la base de données
 $sql = "SELECT champ, valeur FROM contacts";
@@ -39,7 +40,10 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
     <header>
         <nav class="topnav">
             <div class="logo-container"> 
-                <img src="../../images/logotype/logotype_white_subtext.png" alt="Logo"> 
+            <?php
+                echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_white.png') . '&width=150&height=32" alt="Logo">';
+            ?>
+
             </div>
             <div class="burger">
                 <span></span>
@@ -56,7 +60,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
                     }
                 ?>
             </div>
-            <a href="/pages/admin_login.php" class="admin-login-btn">Administration</a> 
+            <a href="/pages/admin_login.php" class="admin-login-btn">Administration</a>              
         </nav>
     </header>
 
