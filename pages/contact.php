@@ -43,7 +43,6 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
             <?php
                 echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_white.png') . '&width=150&height=32" alt="Logo">';
             ?>
-
             </div>
             <div class="burger">
                 <span></span>

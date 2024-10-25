@@ -18,13 +18,14 @@ header {
 
 .logo-container {
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 /* Style pour le logo */
 .logo-container img {
     max-width: 150px; /* Taille du logo */
     height: auto;
+    padding-left: 15px; 
 }
 
 .topnav {

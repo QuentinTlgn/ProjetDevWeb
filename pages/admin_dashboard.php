@@ -9,16 +9,13 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 include('../php/db.php');
+$config = include '../config.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <?php
-        header('Cache-Control: max-age=604800'); // Cache-Control en PHP
-        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + (60*60*24*45)) . ' GMT'); // Expires en PHP 
-    ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/policies.css">
@@ -33,7 +30,10 @@ include('../php/db.php');
     <header>
         <nav class="topnav">
             <div class="logo-container"> 
-                <img src="../../images/logotype/logotype_white_subtext.png" alt="Logo"> 
+            <?php
+                $config = include '../config.php';
+                echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_white.png') . '&width=150&height=32" alt="Logo">';
+            ?>
             </div>
             <div class="burger">
                 <span></span>
@@ -46,6 +46,7 @@ include('../php/db.php');
                 <a href="/pages/contact.php">Contact</a>
                 <a href="/php/logout.php">Déconnexion</a>
             </div>
+            <a href="/pages/admin_login.php" class="admin-login-btn">Administration</a>
         </nav>
     </header>
 

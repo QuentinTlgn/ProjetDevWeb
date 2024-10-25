@@ -20,7 +20,10 @@
     <header>
         <nav class="topnav">
             <div class="logo-container"> 
-                <img src="../../images/logotype/logotype_white_subtext.png" alt="Logo"> 
+            <?php
+                $config = include '../config.php';
+                echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_white.png') . '&width=150&height=32" alt="Logo">';
+            ?>
             </div>
             <div class="burger">
                 <span></span>
@@ -32,6 +35,7 @@
                 <a href="/pages/descriptions.php">Descriptions</a>
                 <a href="/pages/contact.php">Contact</a>
             </div>
+            <a href="/pages/admin_login.php" class="admin-login-btn">Administration</a>
         </nav>
     </header>
 
