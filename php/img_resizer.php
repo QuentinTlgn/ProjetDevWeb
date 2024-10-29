@@ -11,96 +11,76 @@
 */
 function resizeImageFromUrl(string $imageUrl, int $newWidth, int $newHeight): array
 {
-    // Récupérer l'image à partir de l'URL
+    if (!filter_var($imageUrl, FILTER_VALIDATE_URL)) {
+        throw new Exception("URL invalide : $imageUrl");
+    }
+
     $imageContent = file_get_contents($imageUrl);
     if ($imageContent === false) {
-        throw new Exception("Impossible de récupérer l'image à partir de l'URL : $imageUrl");
+        throw new Exception("Erreur de récupération de l'image.");
     }
-    
-    // Créer une image à partir du contenu
+
     $image = imagecreatefromstring($imageContent);
     if ($image === false) {
-        throw new Exception("Impossible de créer une image à partir du contenu.");
+        throw new Exception("Erreur de création de l'image.");
     }
-    
-    // Obtenir les dimensions de l'image originale
+
     $originalWidth = imagesx($image);
     $originalHeight = imagesy($image);
-
-    // Déterminer le format de l'image d'origine
     $imageInfo = getimagesizefromstring($imageContent);
-    $originalFormat = $imageInfo[2]; // 1 = GIF, 2 = JPG, 3 = PNG
+    $originalFormat = $imageInfo[2];
 
-    // Créer une nouvelle image avec les nouvelles dimensions
     $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
 
-    // Gérer la transparence pour les formats PNG et GIF
-    if ($originalFormat == IMAGETYPE_PNG || $originalFormat == IMAGETYPE_GIF) {
+    if (in_array($originalFormat, [IMAGETYPE_PNG, IMAGETYPE_GIF])) {
         imagealphablending($resizedImage, false);
         imagesavealpha($resizedImage, true);
-        $transparent = imagecolorallocatealpha($resizedImage, 0, 0, 0, 127);
-        imagefill($resizedImage, 0, 0, $transparent);
+        imagefill($resizedImage, 0, 0, imagecolorallocatealpha($resizedImage, 0, 0, 0, 127));
     }
 
-    // Redimensionner l'image originale et la copier dans la nouvelle image
     imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-    
-    // Démarrer la mise en mémoire tampon de sortie
+
     ob_start();
-    
-    // Envoyer l'image redimensionnée au format d'origine ou PNG si indéterminé
     switch ($originalFormat) {
         case IMAGETYPE_GIF:
             imagegif($resizedImage);
             $contentType = 'image/gif';
             break;
         case IMAGETYPE_JPEG:
-            imagejpeg($resizedImage, null, 100); // Qualité maximale pour JPEG
+            imagejpeg($resizedImage, null, 75); 
             $contentType = 'image/jpeg';
             break;
-        case IMAGETYPE_PNG:
-            imagepng($resizedImage, null, 0); // Compression maximale pour PNG 
-            $contentType = 'image/png';
-            break;
         default:
-            imagepng($resizedImage, null, 0); // Compression maximale pour PNG par défaut
+            imagepng($resizedImage, null, 2); 
             $contentType = 'image/png';
             break;
     }
-    
-    // Récupérer le contenu de l'image redimensionnée à partir du tampon de sortie
     $resizedImageContent = ob_get_clean();
-    
-    // Libérer les ressources
+
     imagedestroy($image);
     imagedestroy($resizedImage);
-    
-    // Retourner l'image redimensionnée et son type MIME
+
     return ['content' => $resizedImageContent, 'contentType' => $contentType];
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-        if (!isset($_GET['imageUrl']) || !isset($_GET['width']) || !isset($_GET['height'])) {
-            echo "Mauvais nombre d'argument fournis";
-            exit();
+        if (!isset($_GET['imageUrl'], $_GET['width'], $_GET['height'])) {
+            throw new Exception("Paramètres manquants.");
         }
-        
+
         $imageUrl = $_GET['imageUrl'];
         $width = (int)$_GET['width'];
         $height = (int)$_GET['height'];
-        
+
         $resizedImageData = resizeImageFromUrl($imageUrl, $width, $height);
 
-        // Définir les en-têtes pour la mise en cache et le type d'image
         header('Content-Type: ' . $resizedImageData['contentType']);
-        header('Cache-Control: public, max-age=31536000'); // Cache pendant 1 an
+        header('Cache-Control: public, max-age=31536000');
         header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT');
 
-        // Afficher l'image redimensionnée
         echo $resizedImageData['content'];
     } catch (Exception $e) {
-        // Gérer les erreurs
         echo "Erreur : " . $e->getMessage();
     }
 }
