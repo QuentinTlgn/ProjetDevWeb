@@ -1,0 +1,82 @@
+/* print.css */
+
+/* Masquer les éléments inutiles à l'impression */
+header, 
+footer,
+.logo-container
+.admin-login-btn,
+.button-63,
+.burger,
+.topnav,
+.button-63,
+.edit-btn,
+.delete-btn,
+.edit-user-btn,
+.delete-user-btn,
+.close-btn {
+    display: none !important; 
+}
+
+/* Supprimer les ombres */
+.box,
+.product-card,
+form {
+    box-shadow: none !important;
+}
+
+/* Styles pour le contenu principal */
+body {
+    font-family: Arial, sans-serif;
+}
+
+main {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Styles pour les tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: avoid; /* Évite les sauts de page au milieu d'un tableau */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+/* Styles pour les images */
+img {
+    max-width: 100%;
+    height: auto; 
+}
+
+/* Assurez-vous que le contenu est visible en noir et blanc */
+body {
+    color: black !important; 
+    background-color: white !important; 
+}
+
+a {
+    text-decoration: none;
+    color: black !important; 
+}
+
+/* Styles spécifiques pour les cartes produits */
+.product-card {
+    display: block; /* Disposition en bloc pour l'impression */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.product-image img {
+    float: left; 
+    margin-right: 10px; 
+}
+
+.product-info {
+    text-align: left;
+}

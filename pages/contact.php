@@ -32,6 +32,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
     <link rel="stylesheet" href="../css/policies.css">
     <link rel="stylesheet" href="../css/form.css">
     <link rel="stylesheet" href="../css/mediaQueries.css">
+    <link rel="stylesheet" type="text/css" href="/css/print.css" media="print">
     
     <link rel="icon" href="../images/favicon.ico" />
     <title>Rue Des Potiers - Contact</title>
