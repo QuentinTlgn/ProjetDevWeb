@@ -113,7 +113,6 @@
 
     <footer>
         <div class="footer-text">© 2024 Rue Des Potiers. Tous droits réservés.</div>
-        <a href="/pages/admin_login.php" class="footer-link">Administration</a>
     </footer>
     
 </body>
