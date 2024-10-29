@@ -114,6 +114,27 @@
         font-weight: bold; /* Met les labels en gras */
         margin-right: 10px; /* Espacement entre le label et la valeur */
     }
+
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        position: static; /* Supprime la position relative sur mobile */
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+    }
+
+    .separator {
+        display: none; /* Cache la barre de séparation sur mobile */
+    }
 }
 
 @media (max-width: 480px) {

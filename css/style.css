@@ -71,7 +71,7 @@ main {
     background-image: linear-gradient(90deg, rgba(237,190,24,1) 0%, rgba(237,141,24,1) 47%, rgba(224,114,0,1) 100%);
     border: 0;
     border-radius: 8px;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-shadow: rgba(252, 233, 65, 0.2) 0 15px 30px -5px;
     box-sizing: border-box;
     color: #FFFFFF;
     display: flex;
@@ -388,3 +388,47 @@ button.edit-btn:hover, button.delete-btn:hover {
     opacity: 0.8; /* Effet de survol */
 }
 
+/* Styles pour la section contact */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative; /* Ajout de position: relative pour la barre de séparation */
+}
+
+.contact-info {
+    width: 45%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-form {
+    width: 45%; 
+}
+
+/* Styles pour la barre de séparation */
+.separator {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: calc(100% - 40px); /* Hauteur de la barre (100% - padding haut/bas) */
+    width: 1px; /* Épaisseur de la barre */
+    background-color: #ccc; /* Couleur de la barre */
+}
+
+.contact-info h1, .contact-info h2, .contact-info h3 {
+    text-align: center; 
+}
+
+.contact-form {
+    width: 45%; /* Ajustez la largeur si nécessaire */
+}
+
+.contact-form h2 {
+    text-align: center;
+}

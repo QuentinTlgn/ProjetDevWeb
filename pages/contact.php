@@ -65,31 +65,48 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
     </header>
 
     <main>
-        <section>
-            <h1>Nous contacter</h1>
-        </section>
-        
-        <section>
-            <h3>Courrier</h3>
-            <p class="formatted-text"><?php echo $nom; ?>
+        <section class="contact-container"> 
+            <div class="contact-info">
+                <?php
+                    echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_black_subtext.png') . '&width=477&height=102" alt="Logo">';
+                ?>
+                <p><?php echo $mail; ?></p>
+                <p><?php echo $telephone; ?></p>
 
-                <?php echo $adresse; ?>
-            </p>
-        </section>
+                <div class="social-media">
+                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
 
-        <section>
-            <h3>Mail</h3>
-            <a href="mailto:<?php echo $mail; ?>" class="formatted-text"><?php echo $mail; ?></a>
-        </section>
+                <h2>Atelier</h2>
+                <h3><?php echo $adresse; ?></h3>
+            </div>
 
-        <section>
-            <h3>Téléphone</h3>
-            <a href="tel:<?php echo $telephone; ?>" class="formatted-text"><?php echo $telephone; ?></a>
+            <div class="separator"></div>
+
+            <div class="contact-form">
+                <h2>Laissez un message</h2>
+                <form action="../php/send_message.php" method="post"> 
+                    <label for="nom">Nom *</label>
+                    <input type="text" id="nom" name="nom" required>
+
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="sujet">Sujet</label>
+                    <input type="text" id="sujet" name="sujet">
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5"></textarea>
+
+                    <button type="submit" class="button-63">Envoyer</button>
+                </form>
+            </div>
         </section>
     </main>
     
     <footer>
-        <div class="footer-text">&copy; 2024 Rue Des Potiers. Tous droits réservés.</div>
+        <div class="footer-text">© 2024 Rue Des Potiers. Tous droits réservés.</div>
     </footer>
 
 </body>
