@@ -13,6 +13,7 @@ footer,
 .delete-btn,
 .edit-user-btn,
 .delete-user-btn,
+.contact-form,
 .close-btn {
     display: none !important; 
 }
