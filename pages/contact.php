@@ -68,7 +68,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
         <section class="contact-container"> 
             <div class="contact-info">
                 <?php
-                    echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_black_subtext.png') . '&width=477&height=102" alt="Logo">';
+                    echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_black_subtext.png') . '&width=425&height=90" alt="Logo">';
                 ?>
                 <p><?php echo $mail; ?></p>
                 <p><?php echo $telephone; ?></p>
