@@ -388,6 +388,7 @@ button.edit-btn:hover, button.delete-btn:hover {
     opacity: 0.8; /* Effet de survol */
 }
 
+
 /* Styles pour la section contact */
 .contact-container {
     display: flex;
