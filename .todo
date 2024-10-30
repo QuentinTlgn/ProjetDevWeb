@@ -5,7 +5,6 @@ Corriger pb annuler sur les demandes de verification
 Permettre la construction de la page accueil via la bdd : 
 Ajout partie admin avec liste des entrées et ajout d'une entrée
 
-Ajouter script (insertion après form) et bdd pour les messahes 
 Ajouter une box où voir les messages reçus dans la bdd
 
 Rajouter guidage de descriptions à contact (Bouton, action qui pré-rempli le contact-form)

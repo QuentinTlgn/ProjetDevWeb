@@ -433,3 +433,10 @@ button.edit-btn:hover, button.delete-btn:hover {
 .contact-form h2 {
     text-align: center;
 }
+
+.messagesent-container { /* Cibler la classe flex-center quand elle est appliquée à contact-container */
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    min-height: calc(100vh - 160px); /* Hauteur minimale pour que le centrage vertical fonctionne */
+}

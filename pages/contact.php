@@ -93,11 +93,11 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
                     <label for="email">Email *</label>
                     <input type="email" id="email" name="email" required>
 
-                    <label for="sujet">Sujet</label>
-                    <input type="text" id="sujet" name="sujet">
+                    <label for="sujet">Sujet *</label>
+                    <input type="text" id="sujet" name="sujet" required>
                     
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5"></textarea>
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
 
                     <button type="submit" class="button-63">Envoyer</button>
                 </form>
