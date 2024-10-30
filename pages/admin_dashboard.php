@@ -270,8 +270,55 @@ $config = include '../config.php';
                     </tbody>
                 </table>
             </div>
+                            
+            <div class="box">
+                <h2>Messages reçus</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Sujet</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer les messages
+                        $sql = "SELECT id, nom, email, sujet FROM messages ORDER BY id DESC"; 
+                        $stmt = $pdo->query($sql);
 
+                        if ($stmt->rowCount() > 0) {
+                            // Afficher chaque message
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>";
+                                echo "<td data-label='Nom'>" . htmlspecialchars($row['nom']) . "</td>";
+                                echo "<td data-label='Email'>" . htmlspecialchars($row['email']) . "</td>";
+                                echo "<td data-label='Sujet'>" . htmlspecialchars($row['sujet']) . "</td>";
+                                echo "<td data-label='Actions'>
+                                        <button class='view-message-btn' data-id='" . $row['id'] . "'>Voir le message</button>
+                                        <button class='delete-message-btn' data-id='" . $row['id'] . "'>Supprimer</button>
+                                        </td>"; 
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='3'>Aucun message trouvé.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Popup pour afficher le message -->
+            <div class="popup" id="messagePopup">
+                <div class="popup-content">
+                    <button class="close-btn" id="closeMessagePopup">X</button>
+                    <h2>Message</h2>
+                    <div id="messageContent">
 
+                    </div>
+                </div>
+            </div>
+            
         </section>
     </main>
     
@@ -284,5 +331,54 @@ $config = include '../config.php';
 <script src="../js/editProduct.js"></script>    
 <script src="../js/editUser.js"></script>    
 <?php include('../php/remplissage_auto_admin.php'); ?> 
+
+<script>
+    // Gestionnaire d'événements pour les boutons "Voir le message"
+    const viewMessageBtns = document.querySelectorAll('.view-message-btn');
+    const messagePopup = document.getElementById('messagePopup');
+    const messageContent = document.getElementById('messageContent');
+    const closeMessagePopup = document.getElementById('closeMessagePopup');
+
+    viewMessageBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const messageId = btn.dataset.id;
+
+            // Faire une requête AJAX pour récupérer le contenu du message
+            fetch(`../php/get_message_content.php?id=${messageId}`)
+                .then(response => response.text())
+                .then(content => {
+                    messageContent.innerHTML = content;
+                    messagePopup.style.display = 'flex'; 
+                });
+        });
+    });
+
+    // Fermer la popup
+    closeMessagePopup.addEventListener('click', () => {
+        messagePopup.style.display = 'none';
+    });
+
+        // Gestionnaire d'événements pour les boutons "Supprimer le message"
+        const deleteMessageBtns = document.querySelectorAll('.delete-message-btn');
+
+    deleteMessageBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const messageId = btn.dataset.id;
+
+            if (confirm("Êtes-vous sûr de vouloir supprimer ce message ?")) { 
+                // Faire une requête AJAX pour supprimer le message
+                fetch(`../php/delete_message.php?id=${messageId}`)
+                    .then(response => {
+                        if (response.ok) {
+                            // Recharger la page ou mettre à jour le tableau des messages
+                            location.reload(); // Solution simple : recharge la page
+                        } else {
+                            alert("Erreur lors de la suppression du message.");
+                        }
+                    });
+            }
+        });
+    });
+</script>
 
 </html>
