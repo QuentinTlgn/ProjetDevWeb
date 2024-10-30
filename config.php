@@ -1,7 +1,7 @@
 <?php
 
 return (object) array(
-    'url' => 'https://kskskzkz.alwaysdata.net'
+    'url' => 'https://ruedespotiers.kubel.tech'
 );
 
 ?>
