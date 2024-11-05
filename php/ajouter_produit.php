@@ -3,8 +3,7 @@ session_start();
 
 // Vérifier si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
-    // Si l'utilisateur n'est pas connecté, le rediriger vers la page de connexion
-    header("Location: administration.php");
+    header("Location: ../pages/admin_login.php");
     exit();
 }
 

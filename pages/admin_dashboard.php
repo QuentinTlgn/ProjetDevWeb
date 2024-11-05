@@ -322,7 +322,7 @@ $config = include '../config.php';
             
             <div class="box">
                 <h2>Contenu accueil</h2>
-                <form action="../php/accueil_content.php" method="post">
+                <form action="../php/ajouter_accueil_content.php" method="post">
                     <label for="type">Type de contenu:</label>
                     <select id="type" name="type">
                         <option value="title1">Titre 1</option>
