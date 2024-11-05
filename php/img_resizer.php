@@ -47,7 +47,7 @@ function resizeImageFromUrl(string $imageUrl, int $newWidth, int $newHeight): ar
             $contentType = 'image/gif';
             break;
         case IMAGETYPE_JPEG:
-            imagejpeg($resizedImage, null, 75); 
+            imagejpeg($resizedImage, null, 70); 
             $contentType = 'image/jpeg';
             break;
         default:
