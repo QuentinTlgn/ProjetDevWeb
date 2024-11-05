@@ -318,6 +318,83 @@ $config = include '../config.php';
                     </div>
                 </div>
             </div>
+
+            
+            <div class="box">
+                <h2>Contenu accueil</h2>
+                <form action="../php/accueil_content.php" method="post">
+                    <label for="type">Type de contenu:</label>
+                    <select id="type" name="type">
+                        <option value="title1">Titre 1</option>
+                        <option value="title2">Titre 2</option>
+                        <option value="title3">Titre 3</option>
+                        <option value="image">Image</option>
+                        <option value="text">Texte</option>
+                    </select>
+
+                    <label for="content">Contenu:</label>
+                    <textarea id="content" name="content" required></textarea>
+
+                    <button type="submit" name="ajouter">Ajouter</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Contenu</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Récupérer le contenu de l'accueil
+                        $sql = "SELECT * FROM accueil_content";
+                        $stmt = $pdo->query($sql);
+
+                        if ($stmt->rowCount() > 0) {
+                            // Afficher chaque élément de contenu
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>";
+                                echo "<td data-label='Type'>" . htmlspecialchars($row['type']) . "</td>";
+                                echo "<td data-label='Contenu'>" . htmlspecialchars($row['content']) . "</td>";
+                                echo "<td data-label='Actions'>
+                                        <button class='edit-content-btn' data-id='" . $row['id'] . "' data-type='" . htmlspecialchars($row['type']) . "' data-content='" . htmlspecialchars($row['content']) . "'>Modifier</button>
+                                        <button class='delete-content-btn' data-id='" . $row['id'] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet élément ?\");'>Supprimer</button>
+                                    </td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='4'>Aucun élément trouvé.</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="popup" id="contentPopup">
+                <div class="popup-content">
+                    <button class="close-btn" id="closeContentPopup">X</button>
+                    <h2>Modifier le contenu</h2>
+                    <form action="../php/modifier_accueil_content.php" method="post" id="editContentForm">
+                        <input type="hidden" id="editId" name="id">
+
+                        <label for="editType">Type de contenu:</label>
+                        <select id="editType" name="type">
+                            <option value="title1">Titre 1</option>
+                            <option value="title2">Titre 2</option>
+                            <option value="title3">Titre 3</option>
+                            <option value="image">Image</option>
+                            <option value="text">Texte</option>
+                        </select>
+
+                        <label for="editContent">Contenu:</label>
+                        <textarea id="editContent" name="content" required></textarea>
+
+                        <button type="submit" name="modifier">Enregistrer les modifications</button>
+                    </form>
+                </div>
+            </div>
             
         </section>
     </main>
@@ -378,6 +455,55 @@ $config = include '../config.php';
                     });
             }
         });
+    });
+
+    // Gestionnaire d'événements pour les boutons "Supprimer le contenu"
+    const deleteContentBtns = document.querySelectorAll('.delete-content-btn');
+    
+    deleteContentBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const contentId = btn.dataset.id;
+        
+            if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
+                // Faire une requête AJAX pour supprimer le contenu
+                fetch(`../php/delete_accueil_content.php?id=${contentId}`)
+                    .then(response => {
+                        if (response.ok) {
+                            // Recharger la page ou mettre à jour le tableau
+                            location.reload(); 
+                        } else {
+                            alert("Erreur lors de la suppression de l'élément.");
+                        }
+                    });
+            }
+        });
+    });
+
+    // Gestionnaire d'événements pour les boutons "Modifier le contenu"
+    const editContentBtns = document.querySelectorAll('.edit-content-btn');
+    const contentPopup = document.getElementById('contentPopup');
+    const editContentForm = document.getElementById('editContentForm');
+    const closeContentPopup = document.getElementById('closeContentPopup');
+
+    editContentBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const contentId = btn.dataset.id;
+            const type = btn.dataset.type;
+            const content = btn.dataset.content;
+
+            // Remplissez le formulaire de la popup avec les données
+            document.getElementById('editId').value = contentId;
+            document.getElementById('editType').value = type;
+            document.getElementById('editContent').value = content;
+
+            // Affichez la popup
+            contentPopup.style.display = 'flex';
+        });
+    });
+
+    // Fermer la popup
+    closeContentPopup.addEventListener('click', () => {
+        contentPopup.style.display = 'none';
     });
 </script>
 
