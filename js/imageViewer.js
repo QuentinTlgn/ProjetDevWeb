@@ -15,7 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Parcourir les éléments d'image dans le XML
                 for (let i = 0; i < imageElements.length; i++) {
                     const title = imageElements[i].getElementsByTagName("title")[0].textContent;
-                    const path = imageElements[i].getElementsByTagName("path")[0].textContent;
+                    let path = imageElements[i].getElementsByTagName("path")[0].textContent;
+
+                    // Reconstruire l'URL complète
+                    path = `https://ruedespotiers.kubel.tech${path}`; 
+
                     images.push({ title, path }); // Ajouter l'image à la liste
                 }
 
@@ -29,24 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fonction pour charger et afficher l'image
     function loadImage() {
         const currentImage = images[currentImageIndex];
-        const imgUrl = currentImage.path; // On suppose que le chemin est l'URL de l'image
+        const imgUrl = currentImage.path; // URL de l'image originale
+        const resizedUrl = `https://ruedespotiers.kubel.tech/php/img_resizer.php?imageUrl=${encodeURIComponent(imgUrl)}&width=600&height=400`;
 
         // Vérification si l'image est déjà chargée
-        if (loadedImages[imgUrl]) {
-            displayImage(loadedImages[imgUrl], currentImage.title); // Afficher l'image directement
+        if (loadedImages[resizedUrl]) {
+            displayImage(loadedImages[resizedUrl], currentImage.title); // Afficher l'image directement
         } else {
-            // Chargement de l'image
+            // Chargement de l'image redimensionnée
             const img = new Image();
-            img.src = imgUrl;
+            img.src = resizedUrl;
 
             img.onload = function() {
-                loadedImages[imgUrl] = img; // Stocker l'image chargée
+                loadedImages[resizedUrl] = img; // Stocker l'image chargée
                 displayImage(img, currentImage.title);
             };
 
             img.onerror = function() {
                 // Gestion d'erreur si l'image ne peut pas être chargée
-                console.error("Erreur lors du chargement de l'image :", imgUrl);
+                console.error("Erreur lors du chargement de l'image :", resizedUrl);
             };
         }
     }
