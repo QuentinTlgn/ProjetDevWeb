@@ -92,7 +92,7 @@
     </main>
 
     <footer>
-        <div class="footer-text">&copy; 2024 Rue des Potiers. Tous droits réservés.</div>>
+        <div class="footer-text">&copy; 2024 Rue des Potiers. Tous droits réservés.</div>
     </footer>
 
 </body>
