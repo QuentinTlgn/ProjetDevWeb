@@ -60,7 +60,7 @@ $config = include '../config.php';
         <section class="dashboard">
             <div class="box">
                 <h2>Ajouter un produit</h2>
-                <form action="../php/ajouter_produit.php" method="post" enctype="multipart/form-data"> <!-- Ajoutez enctype -->
+                <form action="../php/ajouter_produit.php" method="post" enctype="multipart/form-data">
                     <label for="titre">Titre du produit:</label>
                     <input type="text" id="titre" name="titre" required>
                         

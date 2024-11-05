@@ -1,21 +1,5 @@
-[?] Repartir CSS dans plusieurs pages pour les css spécifiques à une page
-
 Corriger pb annuler sur les demandes de verification
-
-Permettre la construction de la page accueil via la bdd : 
-Ajout partie admin avec liste des entrées et ajout d'une entrée
-
-Ajouter une box où voir les messages reçus dans la bdd
-
-Rajouter guidage de descriptions à contact (Bouton, action qui pré-rempli le contact-form)
 
 Remarques M. Moly : 
 
 Revoir scénario d'utilisation
-
-Guider mieux l'utilisateur sur les pages (Bouton directement sur les pages pour switcher et suivre la "visite" du site)
-
-ImageViewer : Récupérer les images déjà mises en cache. Retailler les images
-Si temps : Revoir la présentation du Carrousel et utiliser les images mises en place dans images/produits
-
-https://stackoverflow.com/questions/43595370/center-top-navigation-horizontally-while-leaving-logo-on-the-left-and-language-s

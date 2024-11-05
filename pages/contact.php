@@ -23,8 +23,10 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
 <head>
     <meta charset="UTF-8">
     <?php
-        header('Cache-Control: max-age=604800'); // Cache-Control en PHP
-        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + (60*60*24*45)) . ' GMT'); // Expires en PHP 
+        // Définition de l'en-tête Cache-Control pour une durée de validité de 604800 secondes (1 semaine)
+        header('Cache-Control: max-age=604800'); 
+        // Définition de l'en-tête Expires pour une date d'expiration dans 45 jours
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + (60*60*24*45)) . ' GMT'); 
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -42,6 +44,7 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
         <nav class="topnav">
             <div class="logo-container"> 
             <?php
+                // Affichage du logo redimensionné à l'aide de php/img_resizer.php
                 echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_white.png') . '&width=150&height=32" alt="Logo">';
             ?>
             </div>
@@ -55,7 +58,8 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
                 <a href="/pages/descriptions.php">Descriptions</a>
                 <a class="active" href="#">Contact</a>
                 <?php
-                    if (isset($_SESSION['user_id'])) { // Vérifie si l'utilisateur est connecté
+                    // Affichage du lien de déconnexion si l'utilisateur est connecté
+                    if (isset($_SESSION['user_id'])) { 
                         echo '<a href="/php/logout.php">Déconnexion</a>';
                     }
                 ?>
@@ -68,15 +72,11 @@ $telephone = isset($contacts['telephone']) ? $contacts['telephone'] : '';
         <section class="contact-container"> 
             <div class="contact-info">
                 <?php
+                    // Affichage du logo redimensionné à l'aide de php/img_resizer.php
                     echo '<img src="../php/img_resizer.php?imageUrl=' . urlencode($config->url . '/images/logotype/logotype_black_subtext.png') . '&width=425&height=90" alt="Logo">';
                 ?>
                 <p><?php echo $mail; ?></p>
                 <p><?php echo $telephone; ?></p>
-
-                <div class="social-media">
-                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
 
                 <h2>Atelier</h2>
                 <h3><?php echo $adresse; ?></h3>

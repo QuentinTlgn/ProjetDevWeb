@@ -27,12 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier_utilisateur']
 
         // Mettre à jour le mot de passe si un nouveau mot de passe est fourni
         if (!empty($newPassword)) {
-            // Hacher le nouveau mot de passe
-            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-
+            
             $sql = "UPDATE admins SET password = ? WHERE username = ?";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$hashedPassword, $newUsername]); 
+            $stmt->execute([$newPassword, $newUsername]); 
 
             // Ajouter un log pour la mise à jour du mot de passe
             ajouter_log($pdo, 'Mise à jour Mot de Passe', "{$_SESSION['user_id']} a mis à jour le mot de passe de $newUsername.");
