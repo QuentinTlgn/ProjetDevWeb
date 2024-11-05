@@ -31,6 +31,8 @@ if (isset($_GET['id'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id]);
 
+    ajouter_log($pdo, 'Ajout de produit', "Contenu avec ID $newId - $type ajouté par {$_SESSION['user_id']}");
+
     // Supprimer le fichier image du serveur
     if ($imageLink) {
         if (file_exists($imageLink)) {
