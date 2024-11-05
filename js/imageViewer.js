@@ -70,5 +70,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Démarre le chargement des images depuis le XML
     loadImagesFromXML();
-    setInterval(nextImage, 3000); // Change d'image toutes les 3 secondes
+    setInterval(nextImage, 6000); // Change d'image toutes les 3 secondes
 });
