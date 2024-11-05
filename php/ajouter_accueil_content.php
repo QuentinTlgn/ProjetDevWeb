@@ -1,5 +1,12 @@
 <?php
 include('../php/db.php'); // Inclure le fichier de connexion à la base de données
+include 'log_functions.php'; // Inclure la fonction d'ajout de log
+
+// Vérifier si l'utilisateur est authentifié
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../pages/admin_login.php");
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $type = $_POST['type'];
@@ -17,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Préparer la requête d'insertion
     $sql = "INSERT INTO accueil_content (id, type, content) VALUES (:id, :type, :content)";
     $stmt = $pdo->prepare($sql);
+
+    ajouter_log($pdo, 'Ajout contenu accueil', "Contenu avec ID $newId - $type ajouté par {$_SESSION['user_id']}");
 
     // Définir les valeurs des paramètres
     $stmt->bindParam(':id', $newId);

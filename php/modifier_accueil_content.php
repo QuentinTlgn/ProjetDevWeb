@@ -1,5 +1,6 @@
 <?php
 include('../php/db.php'); // Inclure le fichier de connexion à la base de données
+include 'log_functions.php'; // Inclure la fonction d'ajout de log
 
 // Vérifier si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
@@ -20,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':type', $type);
     $stmt->bindParam(':content', $content);
+
+    ajouter_log($pdo, 'Modification contenu accueil', "Contenu avec ID $id modifié par {$_SESSION['user_id']}");
 
     // Exécuter la requête
     if ($stmt->execute()) {
