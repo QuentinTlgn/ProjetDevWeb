@@ -64,7 +64,10 @@
                 foreach ($contentRows as $row) {
                     switch ($row['type']) {
                         case 'image':
-                            echo '<img src="' . htmlspecialchars($row['content']) . '" alt="Image">';
+                            // Construire l'URL redimensionnée
+                            $imageUrl = htmlspecialchars($row['content']); // Chemin de l'image depuis la base de données
+                            $resizedUrl = "https://ruedespotiers.kubel.tech/img_resizer.php?imageUrl=" . urlencode($imageUrl) . "&width=600&height=400";
+                            echo '<img src="' . $resizedUrl . '" alt="Image">'; // Afficher l'image redimensionnée
                             break;
                         case 'text':
                             echo '<p class="formatted-text">' . htmlspecialchars($row['content']) . '</p>';
@@ -81,7 +84,7 @@
                     }
                 }
             } catch (PDOException $e) {
-                echo "Erreur de base de données : " . htmlspecialchars($e->getMessage());
+                echo "Une erreur est survenue lors de la récupération du contenu de la page dans la base de données";
             }
         ?>
         <!-- HTML !-->
