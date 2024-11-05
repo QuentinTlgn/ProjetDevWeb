@@ -1,5 +1,3 @@
-/* form.css */
-
 /* Styles pour le formulaire d'authentification */
 form {
     display: flex;
@@ -14,13 +12,28 @@ form {
 }
 
 /* Styles pour les champs de saisie */
-input {
+input, textarea, select { /* Styles pour les champs input, textarea et select */
     margin: 10px 0; /* Marge verticale entre les champs */
     padding: 10px; /* Espacement intérieur */
     border: 1px solid #ccc; /* Bordure légère */
     border-radius: 4px; /* Coins arrondis */
     width: 100%; /* Prend toute la largeur disponible */
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+}
+
+textarea { /* Styles spécifiques aux textarea */
+    min-height: 100px; /* Hauteur minimale pour la zone de texte */
+    resize: vertical; /* Permet de redimensionner la zone de texte verticalement */
+}
+
+select { /* Styles spécifiques aux select */
+    appearance: none; /* Masque l'apparence par défaut du select */
+    -webkit-appearance: none; /* Masque l'apparence par défaut du select pour Safari */
+    padding-right: 25px; /* Ajoute de l'espace pour la flèche */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='%23333' d='M8 11L3 6 8 1 13 6 8 11z' /></svg>"); /* Ajoute une flèche en SVG */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Position de la flèche */
+    background-size: 10px 5px; /* Taille de la flèche */
 }
 
 /* Styles pour les labels */
@@ -43,4 +56,10 @@ button {
 
 button:hover {
     background-color: #0056b3; /* Couleur au survol */
+}
+
+select:hover {
+    border-color: #007bff; /* Change la couleur de la bordure au survol */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Ajoute une ombre bleue au survol */
+    transition: box-shadow 0.3s ease; /* Ajoute une transition pour l'ombre */
 }
