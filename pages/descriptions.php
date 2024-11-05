@@ -110,6 +110,7 @@
                 ?>
             </div>
         </section>
+        <button onclick="location.href='/pages/contact.php'"class="button-63" role="button">Contactez nous pour passer commande !</button>
     </main>
 
     <footer>
