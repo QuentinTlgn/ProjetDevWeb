@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     let images = [];
     let currentImageIndex = 0;
+    let loadedImages = {}; // Stocke les images chargées
 
     // Fonction pour charger les images à partir du fichier XML
     function loadImagesFromXML() {
@@ -27,27 +28,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Fonction pour charger et afficher l'image
     function loadImage() {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", images[currentImageIndex].path, true);
-        xhr.responseType = "blob";
+        const currentImage = images[currentImageIndex];
+        const imgUrl = currentImage.path; // On suppose que le chemin est l'URL de l'image
 
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const imgBlob = xhr.response;
-                const imgUrl = URL.createObjectURL(imgBlob);
-                
-                // Mise à jour de l'image dans le viewer
-                const imageViewer = document.getElementById("image-viewer");
-                imageViewer.innerHTML = `<img src="${imgUrl}" alt="${images[currentImageIndex].title}" class="viewer-img" />`;
+        // Vérification si l'image est déjà chargée
+        if (loadedImages[imgUrl]) {
+            displayImage(loadedImages[imgUrl], currentImage.title); // Afficher l'image directement
+        } else {
+            // Chargement de l'image
+            const img = new Image();
+            img.src = imgUrl;
 
-                // Révoquer l'URL une fois que l'image est chargée
-                imageViewer.querySelector('img').onload = function() {
-                    URL.revokeObjectURL(imgUrl);
-                };
-            }
-        };
+            img.onload = function() {
+                loadedImages[imgUrl] = img; // Stocker l'image chargée
+                displayImage(img, currentImage.title);
+            };
 
-        xhr.send();
+            img.onerror = function() {
+                // Gestion d'erreur si l'image ne peut pas être chargée
+                console.error("Erreur lors du chargement de l'image :", imgUrl);
+            };
+        }
+    }
+
+    // Fonction pour afficher l'image dans le viewer
+    function displayImage(img, title) {
+        const imageViewer = document.getElementById("image-viewer");
+        imageViewer.innerHTML = `<img src="${img.src}" alt="${title}" class="viewer-img" />`;
     }
 
     // Fonction pour passer à l'image suivante
