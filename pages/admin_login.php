@@ -79,10 +79,10 @@
                         ajouter_log($pdo, 'Connexion', "{$_SESSION['user_id']} s'est connecté");
 
                         // Redirection vers une page protégée
-                        header("Location: admin_dashboard.php"); // Remplacez par la page cible
-                        exit(); // Assure-toi que le script s'arrête après la redirection
+                        header("Location: admin_dashboard.php");
+                        exit();
                     } else {
-                         echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
+                        echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";
                     }
                 } else {
                     echo "<p style='color: red;'>Mot de passe ou utilisateur incorrect.</p>";

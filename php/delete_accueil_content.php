@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+// Vérifier si l'utilisateur est authentifié
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../pages/admin_login.php");
+    exit();
+}
+
 include('../php/db.php'); // Inclure le fichier de connexion à la base de données
 include 'log_functions.php'; // Inclure la fonction d'ajout de log
 

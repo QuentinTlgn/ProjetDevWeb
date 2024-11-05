@@ -1,12 +1,14 @@
 <?php
-include('../php/db.php'); // Inclure le fichier de connexion à la base de données
-include 'log_functions.php'; // Inclure la fonction d'ajout de log
+session_start();
 
 // Vérifier si l'utilisateur est authentifié
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../pages/admin_login.php");
     exit();
 }
+
+include('../php/db.php'); // Inclure le fichier de connexion à la base de données
+include 'log_functions.php'; // Inclure la fonction d'ajout de log
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
@@ -27,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Exécuter la requête
     if ($stmt->execute()) {
         // Rediriger vers la page d'administration avec un message de succès
-        header('Location: ../pages/admin_dashboard.php');
+        header('Location: ../pages/admin_dashboard.php?success=10');
         exit();
     } else {
         // Afficher un message d'erreur si la mise à jour a échoué

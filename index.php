@@ -66,7 +66,7 @@
                         case 'image':
                             // Construire l'URL redimensionnée
                             $imageUrl = htmlspecialchars($row['content']); // Chemin de l'image depuis la base de données
-                            $resizedUrl = "https://ruedespotiers.kubel.tech/img_resizer.php?imageUrl=" . urlencode($imageUrl) . "&width=600&height=400";
+                            $resizedUrl = "https://ruedespotiers.kubel.tech/php/img_resizer.php?imageUrl=" . urlencode($imageUrl) . "&width=600&height=400";
                             echo '<img src="' . $resizedUrl . '" alt="Image">'; // Afficher l'image redimensionnée
                             break;
                         case 'text':
