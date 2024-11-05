@@ -380,79 +380,11 @@ $config = include '../config.php';
 </body>
 
 <script src="../js/burgerMenu.js"></script>
-<script src="../js/editProduct.js"></script>    
-<script src="../js/editUser.js"></script>    
+<script src="../js/admin_dashboard.js"></script>    
 <?php include('../php/remplissage_auto_admin.php'); ?> 
 
 <script>
-    // Gestionnaire d'événements pour les boutons "Voir le message"
-    const viewMessageBtns = document.querySelectorAll('.view-message-btn');
-    const messagePopup = document.getElementById('messagePopup');
-    const messageContent = document.getElementById('messageContent');
-    const closeMessagePopup = document.getElementById('closeMessagePopup');
 
-    viewMessageBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const messageId = btn.dataset.id;
-
-            // Faire une requête AJAX pour récupérer le contenu du message
-            fetch(`../php/get_message_content.php?id=${messageId}`)
-                .then(response => response.text())
-                .then(content => {
-                    messageContent.innerHTML = content;
-                    messagePopup.style.display = 'flex'; 
-                });
-        });
-    });
-
-    // Fermer la popup
-    closeMessagePopup.addEventListener('click', () => {
-        messagePopup.style.display = 'none';
-    });
-
-        // Gestionnaire d'événements pour les boutons "Supprimer le message"
-        const deleteMessageBtns = document.querySelectorAll('.delete-message-btn');
-
-    deleteMessageBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const messageId = btn.dataset.id;
-
-            if (confirm("Êtes-vous sûr de vouloir supprimer ce message ?")) { 
-                // Faire une requête AJAX pour supprimer le message
-                fetch(`../php/delete_message.php?id=${messageId}`)
-                    .then(response => {
-                        if (response.ok) {
-                            // Recharger la page ou mettre à jour le tableau des messages
-                            location.reload(); // Solution simple : recharge la page
-                        } else {
-                            alert("Erreur lors de la suppression du message.");
-                        }
-                    });
-            }
-        });
-    });
-
-    // Gestionnaire d'événements pour les boutons "Supprimer le contenu"
-    const deleteContentBtns = document.querySelectorAll('.delete-content-btn');
-    
-    deleteContentBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const contentId = btn.dataset.id;
-        
-            if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
-                // Faire une requête AJAX pour supprimer le contenu
-                fetch(`../php/delete_accueil_content.php?id=${contentId}`)
-                    .then(response => {
-                        if (response.ok) {
-                            // Recharger la page ou mettre à jour le tableau
-                            location.reload(); 
-                        } else {
-                            alert("Erreur lors de la suppression de l'élément.");
-                        }
-                    });
-            }
-        });
-    });
 </script>
 
 </html>

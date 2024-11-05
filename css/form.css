@@ -30,7 +30,6 @@ select { /* Styles spécifiques aux select */
     appearance: none; /* Masque l'apparence par défaut du select */
     -webkit-appearance: none; /* Masque l'apparence par défaut du select pour Safari */
     padding-right: 25px; /* Ajoute de l'espace pour la flèche */
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path fill='%23333' d='M8 11L3 6 8 1 13 6 8 11z' /></svg>"); /* Ajoute une flèche en SVG */
     background-repeat: no-repeat;
     background-position: right 10px center; /* Position de la flèche */
     background-size: 10px 5px; /* Taille de la flèche */
